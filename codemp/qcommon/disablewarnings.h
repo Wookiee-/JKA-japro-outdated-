@@ -34,5 +34,6 @@
 //rww (for vc.net, warning numbers changed apparently):
 #pragma warning(disable : 4213)		//nonstandard extension used : cast on l-value
 #pragma warning(disable : 4245)		//signed/unsigned mismatch
+#pragma warning(disable : 4996)		//This function or variable may be unsafe, string operations
 
 #endif
