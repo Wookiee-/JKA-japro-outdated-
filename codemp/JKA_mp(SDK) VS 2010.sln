@@ -1,0 +1,42 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C++ Express 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JK2cgame", "cgame\JK2_cgame.vcxproj", "{E261D2B1-8C9D-1C99-9380-FF6930223E4F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JK2game", "game\JK2_game.vcxproj", "{0FF90BE5-7DD2-792B-8A6A-C4D5E18DA664}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ui", "ui\ui.vcxproj", "{5166F699-FD00-EF5A-2E3B-50114B499C94}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug(SH)|Win32 = Debug(SH)|Win32
+		Debug|Win32 = Debug|Win32
+		Final|Win32 = Final|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E261D2B1-8C9D-1C99-9380-FF6930223E4F}.Debug(SH)|Win32.ActiveCfg = Debug(SH)|Win32
+		{E261D2B1-8C9D-1C99-9380-FF6930223E4F}.Debug(SH)|Win32.Build.0 = Debug(SH)|Win32
+		{E261D2B1-8C9D-1C99-9380-FF6930223E4F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E261D2B1-8C9D-1C99-9380-FF6930223E4F}.Final|Win32.ActiveCfg = Final|Win32
+		{E261D2B1-8C9D-1C99-9380-FF6930223E4F}.Release|Win32.ActiveCfg = Release|Win32
+		{0FF90BE5-7DD2-792B-8A6A-C4D5E18DA664}.Debug(SH)|Win32.ActiveCfg = Debug(SH)|Win32
+		{0FF90BE5-7DD2-792B-8A6A-C4D5E18DA664}.Debug(SH)|Win32.Build.0 = Debug(SH)|Win32
+		{0FF90BE5-7DD2-792B-8A6A-C4D5E18DA664}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0FF90BE5-7DD2-792B-8A6A-C4D5E18DA664}.Final|Win32.ActiveCfg = Final|Win32
+		{0FF90BE5-7DD2-792B-8A6A-C4D5E18DA664}.Release|Win32.ActiveCfg = Release|Win32
+		{5166F699-FD00-EF5A-2E3B-50114B499C94}.Debug(SH)|Win32.ActiveCfg = Debug(SH)|Win32
+		{5166F699-FD00-EF5A-2E3B-50114B499C94}.Debug(SH)|Win32.Build.0 = Debug(SH)|Win32
+		{5166F699-FD00-EF5A-2E3B-50114B499C94}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5166F699-FD00-EF5A-2E3B-50114B499C94}.Final|Win32.ActiveCfg = Final|Win32
+		{5166F699-FD00-EF5A-2E3B-50114B499C94}.Release|Win32.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(DevPartner Solution Properties) = postSolution
+	EndGlobalSection
+	GlobalSection(DevPartner) = postSolution
+	EndGlobalSection
+	GlobalSection(DevPartner) = postSolution
+	EndGlobalSection
+EndGlobal
