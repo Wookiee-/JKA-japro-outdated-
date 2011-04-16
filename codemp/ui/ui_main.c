@@ -236,7 +236,7 @@ void UI_SetSiegeTeams(void);
 extern qboolean UI_SaberModelForSaber( const char *saberName, char *saberModel );
 void UI_SiegeSetCvarsForClass(siegeClass_t *scl);
 int UI_SiegeClassNum(siegeClass_t *scl);
-void UI_UpdateCvarsForClass(const int team,const baseClass,const int index);
+void UI_UpdateCvarsForClass(const int team, const int baseClass, const int index);
 void	UI_UpdateSiegeStatusIcons(void);
 void UI_ClampMaxPlayers(void);
 static void UI_CheckServerName( void );
@@ -9096,7 +9096,7 @@ void UI_SiegeSetCvarsForClass(siegeClass_t *scl)
 
 int g_siegedFeederForcedSet = 0;
 
-void UI_UpdateCvarsForClass(const int team,const baseClass,const int index)
+void UI_UpdateCvarsForClass(const int team, const int baseClass, const int index)
 {
 	siegeClass_t *holdClass=0;
 	char *holdBuf;
