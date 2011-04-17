@@ -1663,6 +1663,8 @@ extern	vmCvar_t	g_powerDuelEndHealth;
 
 extern vmCvar_t		g_showDuelHealths;
 
+extern vmCvar_t		g_maxConnectionsPerIP;
+
 #include "../namespace_begin.h"
 
 void	trap_Printf( const char *fmt );
