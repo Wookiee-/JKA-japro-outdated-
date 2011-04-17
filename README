@@ -1,1 +1,6 @@
-JKA Open Base
+JKA Open Base is designed to be a suitable alternative to the Jedi Academy SDK code base.
+It is open source and can be used for open source projects or closed source projects.
+It includes bug fixes and security fixes that the sdk lacks.
+
+Current Supported Platforms:
+Microsoft Visual Studio C++ 2010
