@@ -44,7 +44,7 @@
 #endif
 
 #ifdef _JK2MP
-extern gentity_t *NPC_Spawn_Do( gentity_t *ent );
+extern gentity_t *NPC_Spawn_Do( gentity_t *ent, gentity_t *client);
 extern void NPC_SetAnim(gentity_t	*ent,int setAnimParts,int anim,int setAnimFlags);
 #else
 extern gentity_t *NPC_Spawn_Do( gentity_t *pEnt, qboolean fullSpawnNow );
@@ -204,7 +204,7 @@ void G_VehicleSpawn( gentity_t *self )
 	yaw = self->s.angles[YAW];
 	
 #ifdef _JK2MP
-	vehEnt = NPC_Spawn_Do( self );
+	vehEnt = NPC_Spawn_Do( self, 0 );
 #else
 	vehEnt = NPC_Spawn_Do( self, qtrue );
 #endif
