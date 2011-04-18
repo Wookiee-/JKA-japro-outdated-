@@ -451,7 +451,7 @@ qboolean ValidForcePowerString(const char *forcePowerString)
 		return qfalse;
 
 	// check for in range lightside/darkside
-	if (forcePowerString[2] < '0' || forcePowerString[2] > '1')
+	if (forcePowerString[2] < '1' || forcePowerString[2] > '2')
 		return qfalse;
 
 	// check force power levels
