@@ -1521,7 +1521,14 @@ void G_Say( gentity_t *ent, gentity_t *target, int mode, const char *chatText ) 
 	char		location[64];
 	char		*locMsg = NULL;
 
+	// trim chat text
 	Q_strncpyz(text, chatText, sizeof(text));
+
+	// check for invalid characters
+	if (strchr(text, '\r') || strchr(text, '\n')) {
+		trap_SendServerCommand(ent-g_entities, "print \"Invalid chat text\n\"");
+		return;
+	}
 
 	if ( g_gametype.integer < GT_TEAM && mode == SAY_TEAM ) {
 		mode = SAY_ALL;
