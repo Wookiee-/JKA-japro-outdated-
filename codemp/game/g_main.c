@@ -221,6 +221,7 @@ vmCvar_t	g_powerDuelEndHealth;
 vmCvar_t		g_showDuelHealths;
 
 vmCvar_t		g_maxConnectionsPerIP;
+vmCvar_t		g_allowBlackNames;
 
 // bk001129 - made static to avoid aliasing
 static cvarTable_t		gameCvarTable[] = {
@@ -249,6 +250,8 @@ static cvarTable_t		gameCvarTable[] = {
 
 	// change anytime vars
 	{ &g_maxConnectionsPerIP, "g_maxConnectionsPerIP", "1", CVAR_ARCHIVE, 0, qtrue, qfalse },
+	{ &g_allowBlackNames, "g_allowBlackNames", "0", CVAR_ARCHIVE, 0, qtrue, qfalse },
+
 	{ &g_ff_objectives, "g_ff_objectives", "0", /*CVAR_SERVERINFO |*/ CVAR_CHEAT | CVAR_NORESTART, 0, qtrue },
 
 	{ &g_autoMapCycle, "g_autoMapCycle", "0", CVAR_ARCHIVE | CVAR_NORESTART, 0, qtrue },
