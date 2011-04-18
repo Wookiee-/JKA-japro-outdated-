@@ -1260,6 +1260,7 @@ Some characters are illegal in info strings because they
 can mess up the server's parsing
 ==================
 */
+/*
 qboolean Info_Validate( const char *s ) {
 	if ( strchr( s, '\"' ) ) {
 		return qfalse;
@@ -1268,6 +1269,11 @@ qboolean Info_Validate( const char *s ) {
 		return qfalse;
 	}
 	return qtrue;
+}
+*/
+qboolean Info_Invalid(const char *s)
+{
+	return (qboolean) (strchr(s, '\"') || strchr(s, ';') || strchr(s, '\n') || strchr(s, '\r'));
 }
 
 /*

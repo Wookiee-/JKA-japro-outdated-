@@ -1909,11 +1909,13 @@ void ClientUserinfoChanged( int clientNum ) {
 	ent = g_entities + clientNum;
 	client = ent->client;
 
-	trap_GetUserinfo( clientNum, userinfo, sizeof( userinfo ) );
+	// get userinfo packet
+	trap_GetUserinfo(clientNum, userinfo, sizeof(userinfo));
 
 	// check for malformed or illegal info strings
-	if ( !Info_Validate(userinfo) ) {
-		strcpy (userinfo, "\\name\\badinfo");
+	if (Info_Invalid(userinfo)) {
+		trap_SendServerCommand(clientNum, "print \"Invalid Userinfo detected\n\"");
+		return;
 	}
 
 	// check for local client
@@ -2355,7 +2357,7 @@ char *ClientConnect( int clientNum, qboolean firstTime, qboolean isBot ) {
 		}
 	}
 
-	if (!(ent->r.svFlags & SVF_BOT) && !isBot && ExceedsMaxConnections(clientNum)) {
+	if (firstTime && !(ent->r.svFlags & SVF_BOT) && !isBot && ExceedsMaxConnections(clientNum)) {
 		return "Exceeded Max Connections";
 	}
 
