@@ -489,25 +489,31 @@ qboolean G_RemoveRandomBot(int team)
 G_CountHumanPlayers
 ===============
 */
-int G_CountHumanPlayers( int team ) {
-	int i, num;
-	gclient_t	*cl;
+int G_CountHumanPlayers(int team)
+{
+	int i, count;
+	gclient_t *client;
 
-	num = 0;
-	for ( i=0 ; i< g_maxclients.integer ; i++ ) {
-		cl = level.clients + i;
-		if ( cl->pers.connected != CON_CONNECTED ) {
+	for (i = 0, count = 0; i < level.maxclients; ++i)
+	{
+		client = level.clients + i;
+
+		// must be connected
+		if (client->pers.connected != CON_CONNECTED)
 			continue;
-		}
-		if ( g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT ) {
+
+		// must not be a bot
+		if (g_entities[i].r.svFlags & SVF_BOT)
 			continue;
-		}
-		if ( team >= 0 && cl->sess.sessionTeam != team ) {
+
+		// if team is specified, must match a team
+		if (team >= 0 && (g_gametype.integer == GT_SIEGE && team != client->sess.siegeDesiredTeam || team != client->sess.sessionTeam))
 			continue;
-		}
-		num++;
+
+		++count;
 	}
-	return num;
+
+	return count;
 }
 
 /*
