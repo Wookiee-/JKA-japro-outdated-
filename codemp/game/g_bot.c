@@ -455,36 +455,32 @@ void G_AddRandomBot( int team ) {
 G_RemoveRandomBot
 ===============
 */
-int G_RemoveRandomBot( int team ) {
+qboolean G_RemoveRandomBot(int team)
+{
 	int i;
-	char netname[36];
-	gclient_t	*cl;
+	gclient_t *client;
 
-	for ( i=0 ; i< g_maxclients.integer ; i++ ) {
-		cl = level.clients + i;
-		if ( cl->pers.connected != CON_CONNECTED ) {
+	for (i = 0; i < level.maxclients; ++i)
+	{
+		client = level.clients + i;
+
+		// must be a connected client
+		if (client->pers.connected != CON_CONNECTED)
 			continue;
-		}
-		if ( !(g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT) ) {
+
+		// must be a bot
+		if (!(g_entities[i].r.svFlags & SVF_BOT))
 			continue;
-		}
-		if (g_gametype.integer == GT_SIEGE)
-		{
-			if ( team >= 0 && cl->sess.siegeDesiredTeam != team ) {
-				continue;
-			}
-		}
-		else
-		{
-			if ( team >= 0 && cl->sess.sessionTeam != team ) {
-				continue;
-			}
-		}
-		strcpy(netname, cl->pers.netname);
-		Q_CleanStr(netname);
-		trap_SendConsoleCommand( EXEC_INSERT, va("kick \"%s\"\n", netname) );
+
+		// if team is specified, must match a team
+		if (team >= 0 && (g_gametype.integer == GT_SIEGE && team != client->sess.siegeDesiredTeam || team != client->sess.sessionTeam))
+			continue;
+
+		trap_SendConsoleCommand(EXEC_INSERT, va("clientkick \"%i\"\n", i));
+
 		return qtrue;
 	}
+
 	return qfalse;
 }
 
