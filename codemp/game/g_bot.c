@@ -476,7 +476,7 @@ qboolean G_RemoveRandomBot(int team)
 		if (team >= 0 && (g_gametype.integer == GT_SIEGE && team != client->sess.siegeDesiredTeam || team != client->sess.sessionTeam))
 			continue;
 
-		trap_SendConsoleCommand(EXEC_INSERT, va("clientkick \"%i\"\n", i));
+		trap_SendConsoleCommand(EXEC_INSERT, va("clientkick %i\n", i));
 
 		return qtrue;
 	}
