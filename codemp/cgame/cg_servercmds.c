@@ -1554,7 +1554,7 @@ static void CG_ServerCommand( void ) {
 			Q_strncpyz( text, CG_Argv(1), MAX_SAY_TEXT );
 			CG_RemoveChatEscapeChar( text );
 			CG_ChatBox_AddString(text);
-			CG_Printf( "*%s\n", text );
+			Com_Printf2(qtrue, "%s\n", text);
 		}
 		return;
 	}
@@ -1564,7 +1564,7 @@ static void CG_ServerCommand( void ) {
 		Q_strncpyz( text, CG_Argv(1), MAX_SAY_TEXT );
 		CG_RemoveChatEscapeChar( text );
 		CG_ChatBox_AddString(text);
-		CG_Printf( "*%s\n", text );
+		Com_Printf2(qtrue, "%s\n", text);
 
 		return;
 	}
@@ -1597,7 +1597,7 @@ static void CG_ServerCommand( void ) {
 			Com_sprintf(text, MAX_SAY_TEXT, "%s<%s>^%s%s", name, loc, color, message);
 			CG_RemoveChatEscapeChar( text );
 			CG_ChatBox_AddString(text);
-			CG_Printf( "*%s\n", text );
+			Com_Printf2(qtrue, "%s\n", text);
 		}
 		return;
 	}
@@ -1627,7 +1627,7 @@ static void CG_ServerCommand( void ) {
 		Com_sprintf(text, MAX_SAY_TEXT, "%s<%s> ^%s%s", name, loc, color, message);
 		CG_RemoveChatEscapeChar( text );
 		CG_ChatBox_AddString(text);
-		CG_Printf( "*%s\n", text );
+		Com_Printf2(qtrue, "%s\n", text);
 
 		return;
 	}
