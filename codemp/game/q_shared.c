@@ -1371,6 +1371,114 @@ void Info_SetValueForKey_Big( char *s, const char *key, const char *value ) {
 	strcat (s, newi);
 }
 
+void Sys_Print(char *s)
+{
+	unsigned int Conbuf_AppendText = 0x004544C0;
+
+	__asm
+	{
+		pushad
+		mov ecx, s
+		call Conbuf_AppendText
+		popad
+	}
+}
+
+fileHandle_t FS_FOpenFileWrite(const char *file)
+{
+	unsigned int address = 0x0043B250;
+	fileHandle_t handle;
+
+	__asm
+	{
+		pushad
+		mov ebx, file
+		call address
+		mov handle, eax
+		popad
+	}
+
+	return handle;
+}
+
+void FS_ForceFlush(fileHandle_t handle)
+{
+	unsigned int address = 0x0043ABA0;
+
+	__asm
+	{
+		pushad
+		mov eax, handle
+		call address
+		popad
+	}
+}
+
+qboolean FS_Initialized()
+{
+	unsigned int **pfs_searchPaths = (unsigned int **) 0x00B65EC0;
+	
+	return (qboolean) (*pfs_searchPaths != 0);
+}
+
+void QDECL Com_Printf2(qboolean skipNotify, char *fmt, ...)
+{
+	char *rd_buffer = *(char **) 0x00B42CAC;
+	int rd_buffersize = *(int *) 0x00B42CA8;
+	void (*rd_flush)(char *buffer) = *(void (**)(char *)) 0x00B42CA4;
+	cvar_t *com_dedicated = *(cvar_t **) 0x00B43D20;
+	cvar_t *com_logfile = *(cvar_t **) 0x00B43CFC;
+	void (*CL_ConsolePrint)(char *msg, qboolean skipNotify) = (void (*)(char *, qboolean)) 0x00417630;
+	fileHandle_t *pLogFile = (fileHandle_t*) 0x00B43D3C;
+	void (*FS_Write)(const void *buffer, int len, fileHandle_t f) = (void (*)(const void *, int, fileHandle_t)) 0x0043C140;
+	char msg[4096];
+	va_list		argptr;
+
+	va_start(argptr, fmt);
+	vsnprintf(msg, sizeof(msg), fmt, argptr);
+	va_end(argptr);
+
+	if (rd_buffer)
+	{
+		if (strlen(msg) + strlen(rd_buffer) > rd_buffersize - 1)
+		{
+			rd_flush(rd_buffer);
+			*rd_buffer = 0;
+		}
+		
+		Q_strcat(rd_buffer, rd_buffersize, s);
+
+		return;
+	}
+
+	// echo to console if we're not a dedicated server
+	if (com_dedicated && !com_dedicated->integer)
+		CL_ConsolePrint(msg, skipNotify);
+
+	// echo to dedicated console and early console
+	Sys_Print(msg);
+
+	if (com_logfile && com_logfile->integer)
+	{
+		if (!*pLogFile && FS_Initialized())
+		{
+			struct tm *newtime;
+			time_t aclock;
+
+			time(&aclock);
+			newtime = localtime(&aclock);
+
+			*pLogFile = FS_FOpenFileWrite("qconsole.log");
+
+			Com_Printf("logfile opened on %s\n", asctime(newtime));
+
+			if (com_logfile->integer > 1)
+				FS_ForceFlush(*pLogFile);
+		}
+
+		if (*pLogFile && FS_Initialized())
+			FS_Write(msg, strlen(msg), *pLogFile);
+	}
+}
+
 //====================================================================
-
-
