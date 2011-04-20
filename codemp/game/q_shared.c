@@ -1446,7 +1446,7 @@ void QDECL Com_Printf2(qboolean skipNotify, char *fmt, ...)
 			*rd_buffer = 0;
 		}
 		
-		Q_strcat(rd_buffer, rd_buffersize, s);
+		Q_strcat(rd_buffer, rd_buffersize, msg);
 
 		return;
 	}
