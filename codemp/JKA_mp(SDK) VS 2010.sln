@@ -1,10 +1,10 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C++ Express 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cgame", "cgame\JK2_cgame.vcxproj", "{E261D2B1-8C9D-1C99-9380-FF6930223E4F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cgame", "cgame\JK2_cgame.vcxproj", "{D1D2C120-44B3-F3C0-56B2-78A3C83A18B5}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "game", "game\JK2_game.vcxproj", "{0FF90BE5-7DD2-792B-8A6A-C4D5E18DA664}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "game", "game\JK2_game.vcxproj", "{4FEFA181-F927-8CA0-F59C-8AC2615E84B2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ui", "ui\ui.vcxproj", "{5166F699-FD00-EF5A-2E3B-50114B499C94}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ui", "ui\ui.vcxproj", "{73125E34-5626-0D48-A007-F8E10012C9B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,24 +14,24 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E261D2B1-8C9D-1C99-9380-FF6930223E4F}.Debug(SH)|Win32.ActiveCfg = Debug(SH)|Win32
-		{E261D2B1-8C9D-1C99-9380-FF6930223E4F}.Debug(SH)|Win32.Build.0 = Debug(SH)|Win32
-		{E261D2B1-8C9D-1C99-9380-FF6930223E4F}.Debug|Win32.ActiveCfg = Debug|Win32
-		{E261D2B1-8C9D-1C99-9380-FF6930223E4F}.Final|Win32.ActiveCfg = Final|Win32
-		{E261D2B1-8C9D-1C99-9380-FF6930223E4F}.Final|Win32.Build.0 = Final|Win32
-		{E261D2B1-8C9D-1C99-9380-FF6930223E4F}.Release|Win32.ActiveCfg = Release|Win32
-		{0FF90BE5-7DD2-792B-8A6A-C4D5E18DA664}.Debug(SH)|Win32.ActiveCfg = Debug(SH)|Win32
-		{0FF90BE5-7DD2-792B-8A6A-C4D5E18DA664}.Debug(SH)|Win32.Build.0 = Debug(SH)|Win32
-		{0FF90BE5-7DD2-792B-8A6A-C4D5E18DA664}.Debug|Win32.ActiveCfg = Debug|Win32
-		{0FF90BE5-7DD2-792B-8A6A-C4D5E18DA664}.Final|Win32.ActiveCfg = Final|Win32
-		{0FF90BE5-7DD2-792B-8A6A-C4D5E18DA664}.Final|Win32.Build.0 = Final|Win32
-		{0FF90BE5-7DD2-792B-8A6A-C4D5E18DA664}.Release|Win32.ActiveCfg = Release|Win32
-		{5166F699-FD00-EF5A-2E3B-50114B499C94}.Debug(SH)|Win32.ActiveCfg = Debug(SH)|Win32
-		{5166F699-FD00-EF5A-2E3B-50114B499C94}.Debug(SH)|Win32.Build.0 = Debug(SH)|Win32
-		{5166F699-FD00-EF5A-2E3B-50114B499C94}.Debug|Win32.ActiveCfg = Debug|Win32
-		{5166F699-FD00-EF5A-2E3B-50114B499C94}.Final|Win32.ActiveCfg = Final|Win32
-		{5166F699-FD00-EF5A-2E3B-50114B499C94}.Final|Win32.Build.0 = Final|Win32
-		{5166F699-FD00-EF5A-2E3B-50114B499C94}.Release|Win32.ActiveCfg = Release|Win32
+		{D1D2C120-44B3-F3C0-56B2-78A3C83A18B5}.Debug(SH)|Win32.ActiveCfg = Debug(SH)|Win32
+		{D1D2C120-44B3-F3C0-56B2-78A3C83A18B5}.Debug(SH)|Win32.Build.0 = Debug(SH)|Win32
+		{D1D2C120-44B3-F3C0-56B2-78A3C83A18B5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D1D2C120-44B3-F3C0-56B2-78A3C83A18B5}.Final|Win32.ActiveCfg = Final|Win32
+		{D1D2C120-44B3-F3C0-56B2-78A3C83A18B5}.Final|Win32.Build.0 = Final|Win32
+		{D1D2C120-44B3-F3C0-56B2-78A3C83A18B5}.Release|Win32.ActiveCfg = Release|Win32
+		{4FEFA181-F927-8CA0-F59C-8AC2615E84B2}.Debug(SH)|Win32.ActiveCfg = Debug(SH)|Win32
+		{4FEFA181-F927-8CA0-F59C-8AC2615E84B2}.Debug(SH)|Win32.Build.0 = Debug(SH)|Win32
+		{4FEFA181-F927-8CA0-F59C-8AC2615E84B2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4FEFA181-F927-8CA0-F59C-8AC2615E84B2}.Final|Win32.ActiveCfg = Final|Win32
+		{4FEFA181-F927-8CA0-F59C-8AC2615E84B2}.Final|Win32.Build.0 = Final|Win32
+		{4FEFA181-F927-8CA0-F59C-8AC2615E84B2}.Release|Win32.ActiveCfg = Release|Win32
+		{73125E34-5626-0D48-A007-F8E10012C9B4}.Debug(SH)|Win32.ActiveCfg = Debug(SH)|Win32
+		{73125E34-5626-0D48-A007-F8E10012C9B4}.Debug(SH)|Win32.Build.0 = Debug(SH)|Win32
+		{73125E34-5626-0D48-A007-F8E10012C9B4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{73125E34-5626-0D48-A007-F8E10012C9B4}.Final|Win32.ActiveCfg = Final|Win32
+		{73125E34-5626-0D48-A007-F8E10012C9B4}.Final|Win32.Build.0 = Final|Win32
+		{73125E34-5626-0D48-A007-F8E10012C9B4}.Release|Win32.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
