@@ -720,11 +720,6 @@ void CG_DrawArmor( menuDef_t *menuHUD )
 	armor = ps->stats[STAT_ARMOR];
 	maxArmor = ps->stats[STAT_MAX_HEALTH];
 
-	if (armor> maxArmor)
-	{
-		armor = maxArmor;
-	}
-
 	currValue = armor;
 	inc = (float) maxArmor / MAX_HUD_TICS;
 
