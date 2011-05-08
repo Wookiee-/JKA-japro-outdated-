@@ -465,8 +465,7 @@ void WP_InitForcePowers( gentity_t *ent )
 	}
 	else
 	{
-		/* Remove warnClient */
-		/*if (warnClient || !ent->client->sess.setForce)
+		if (warnClient || !ent->client->sess.setForce)
 		{ //the client's rank is too high for the server and has been autocapped, so tell them
 			if (g_gametype.integer != GT_HOLOCRON && g_gametype.integer != GT_JEDIMASTER )
 			{
@@ -526,10 +525,6 @@ void WP_InitForcePowers( gentity_t *ent )
 		{ //the server has one or more force powers disabled and the client is using them in his config
 			//trap_SendServerCommand(ent-g_entities, va("print \"The server has one or more force powers that you have chosen disabled.\nYou will not be able to use the disable force power(s) while playing on this server.\n\""));
 		}
-		*/
-		/* END Remove Warn Client */
-
-		// Do nothing about warnclients, it is just annoying
 	}
 
 	i = 0;
