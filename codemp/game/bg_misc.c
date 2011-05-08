@@ -426,46 +426,6 @@ void BG_ParseField( BG_field_t *l_fields, const char *key, const char *value, by
 
 /*
 ================
-ValidForcePowerString
-
-This will check if the string has a valid format such as proper
-force string length, and dashes, and numbers
-
-Pattern: "5-1-000000000000000000"
-================
-*/
-qboolean ValidForcePowerString(const char *forcePowerString)
-{	
-	int i;
-
-	// check for correct length
-	if (strlen(forcePowerString) != 22)
-		return qfalse;
-
-	// check for dashes in correct place
-	if (forcePowerString[1] != '-' || forcePowerString[3] != '-')
-		return qfalse;
-
-	// check for in range force rank
-	if (forcePowerString[0] > '7' || forcePowerString[0] < '0')
-		return qfalse;
-
-	// check for in range lightside/darkside
-	if (forcePowerString[2] < '1' || forcePowerString[2] > '2')
-		return qfalse;
-
-	// check force power levels
-	for (i = 5; i < 22; ++i)
-	{
-		if (forcePowerString[i] < '0' || forcePowerString[i] > '3')
-			return qfalse;
-	}
-
-	return qtrue;
-}
-
-/*
-================
 BG_LegalizedForcePowers
 
 The magical function to end all functions.
@@ -481,6 +441,7 @@ qboolean BG_LegalizedForcePowers(char *powerOut, int maxRank, qboolean freeSaber
 	char powerBuf[128];
 	char readBuf[128];
 	qboolean maintainsValidity = qtrue;
+	int powerLen = strlen(powerOut);
 	int i = 0;
 	int c = 0;
 	int allowedPoints = 0;
@@ -488,14 +449,17 @@ qboolean BG_LegalizedForcePowers(char *powerOut, int maxRank, qboolean freeSaber
 	int countDown = 0;
 	
 	int final_Side;
-	int final_Powers[NUM_FORCE_POWERS];
+	int final_Powers[NUM_FORCE_POWERS] = {0};
 
-	if (ValidForcePowerString(powerOut))
-		strcpy(powerBuf, powerOut);
-	else
-	{
+	if (powerLen >= 128)
+	{ //This should not happen. If it does, this is obviously a bogus string.
+		//They can have this string. Because I said so.
 		strcpy(powerBuf, "7-1-032330000000001333");
 		maintainsValidity = qfalse;
+	}
+	else
+	{
+		strcpy(powerBuf, powerOut); //copy it as the original
 	}
 
 	//first of all, print the max rank into the string as the rank
