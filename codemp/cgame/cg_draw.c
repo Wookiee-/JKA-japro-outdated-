@@ -1410,9 +1410,6 @@ qboolean ForcePower_Valid(int i)
 CG_DrawForceSelect
 ===================
 */
-#ifdef _XBOX
-extern bool CL_ExtendSelectTime(void);
-#endif
 void CG_DrawForceSelect( void ) 
 {
 	int		i;
@@ -1443,13 +1440,6 @@ void CG_DrawForceSelect( void )
 	{
 		return;
 	}
-
-#ifdef _XBOX
-	if(CL_ExtendSelectTime()) {
-		cg.forceSelectTime = cg.time;
-	}
-	yOffset = -50;
-#endif
 
 	// count the number of powers owned
 	count = 0;
@@ -1603,12 +1593,6 @@ void CG_DrawInvenSelect( void )
 	{
 		return;
 	}
-
-#ifdef _XBOX
-	if(CL_ExtendSelectTime()) {
-		cg.invenSelectTime = cg.time;
-	}
-#endif
 
 	if (cg.itemSelect == -1)
 	{
@@ -2810,10 +2794,6 @@ static float CG_DrawMiniScoreboard ( float y )
 	char temp[MAX_QPATH];
 	int xOffset = 0;
 
-#ifdef _XBOX
-	xOffset = -40;
-#endif
-
 	if ( !cg_drawScores.integer )
 	{
 		return y;
@@ -2870,10 +2850,6 @@ static float CG_DrawEnemyInfo ( float y )
 	{
 		return y;
 	}
-
-#ifdef _XBOX
-	xOffset = -40;
-#endif
 
 	if ( !cg_drawEnemyInfo.integer ) 
 	{
@@ -3044,10 +3020,6 @@ static float CG_DrawSnapshot( float y ) {
 	int			w;
 	int			xOffset = 0;
 
-#ifdef _XBOX
-	xOffset = -40;
-#endif
-
 	s = va( "time:%i snap:%i cmd:%i", cg.snap->serverTime, 
 		cg.latestSnapshotNum, cgs.serverCommandSequence );
 	w = CG_DrawStrlen( s ) * BIGCHAR_WIDTH;
@@ -3071,11 +3043,8 @@ static float CG_DrawFPS( float y ) {
 	static int	previous, lastupdate;
 	int		t, i, fps, total;
 	unsigned short frameTime;
-#ifdef _XBOX
-	const int		xOffset = -40;
-#else
+
 	const int		xOffset = 0;
-#endif
 
 
 	// don't use serverTime, because that will be drifting to
@@ -3188,10 +3157,6 @@ float CG_DrawRadar ( float y )
 	{
 		return y;
 	}
-
-#ifdef _XBOX
-	xOffset = -40;
-#endif
 
 	// Make sure the radar should be showing
 	if ( cg.snap->ps.stats[STAT_HEALTH] <= 0 )
@@ -3744,10 +3709,6 @@ static float CG_DrawTimer( float y ) {
 	int			msec;
 	int			xOffset = 0;
 
-#ifdef _XBOX
-	xOffset = -40;
-#endif
-
 	msec = cg.time - cgs.levelStartTime;
 
 	seconds = msec / 1000;
@@ -3783,10 +3744,6 @@ static float CG_DrawTeamOverlay( float y, qboolean right, qboolean upper ) {
 	gitem_t	*item;
 	int ret_y, count;
 	int xOffset = 0;
-
-#ifdef _XBOX
-	xOffset = -40;
-#endif
 
 	if ( !cg_drawTeamOverlay.integer ) {
 		return y;
@@ -3952,10 +3909,6 @@ static void CG_DrawPowerupIcons(int y)
 	int xOffset = 0;
 	gitem_t	*item;
 
-#ifdef _XBOX
-	xOffset = -40;
-#endif
-
 	if (!cg.snap)
 	{
 		return;
@@ -4015,11 +3968,7 @@ CG_DrawUpperRight
 static void CG_DrawUpperRight( void ) {
 	float	y;
 
-#ifdef _XBOX
-	y = 50;
-#else
 	y = 0;
-#endif
 
 	trap_R_SetColor( colorTable[CT_WHITE] );
 
@@ -4790,10 +4739,6 @@ CG_DrawCrosshair
 =================
 */
 
-#ifdef _XBOX
-int cg_crossHairStatus = 0;
-#endif
-
 float cg_crosshairPrevPosX = 0;
 float cg_crosshairPrevPosY = 0;
 #define CRAZY_CROSSHAIR_MAX_ERROR_X	(100.0f*640.0f/480.0f)
@@ -4849,10 +4794,6 @@ static void CG_DrawCrosshair( vec3_t worldPoint, int chEntValid ) {
 	vec4_t		ecolor = {0,0,0,0};
 	centity_t	*crossEnt = NULL;
 	float		chX, chY;
-
-#ifdef _XBOX
-	cg_crossHairStatus = 0;
-#endif
 
 	if ( worldPoint )
 	{
@@ -4929,9 +4870,6 @@ static void CG_DrawCrosshair( vec3_t worldPoint, int chEntValid ) {
 						ecolor[0] = 1.0;//R
 						ecolor[1] = 0.0;//G
 						ecolor[2] = 0.0;//B
-#ifdef _XBOX
-						cg_crossHairStatus = 1;
-#endif
 					}
 				}
 
@@ -5001,9 +4939,6 @@ static void CG_DrawCrosshair( vec3_t worldPoint, int chEntValid ) {
 									ecolor[0] = 1.0;//R
 									ecolor[1] = 0.0;//G
 									ecolor[2] = 0.0;//B
-#ifdef _XBOX
-									cg_crossHairStatus = 1;
-#endif
 								}
 							}
 							else
@@ -5018,9 +4953,6 @@ static void CG_DrawCrosshair( vec3_t worldPoint, int chEntValid ) {
 							ecolor[0] = 1.0;//R
 							ecolor[1] = 0.0;//G
 							ecolor[2] = 0.0;//B
-#ifdef _XBOX
-							cg_crossHairStatus = 1;
-#endif
 						}
 					}
 					else if ( crossEnt->currentState.teamowner != plTeam )
@@ -5028,9 +4960,6 @@ static void CG_DrawCrosshair( vec3_t worldPoint, int chEntValid ) {
 						ecolor[0] = 1.0;//R
 						ecolor[1] = 0.0;//G
 						ecolor[2] = 0.0;//B
-#ifdef _XBOX
-						cg_crossHairStatus = 1;
-#endif
 					}
 					else
 					{ //a friend
@@ -5053,9 +4982,6 @@ static void CG_DrawCrosshair( vec3_t worldPoint, int chEntValid ) {
 						ecolor[0] = 1.0;//R
 						ecolor[1] = 0.0;//G
 						ecolor[2] = 0.0;//B
-#ifdef _XBOX
-						cg_crossHairStatus = 1;
-#endif
 					}
 					else
 					{ //on my team
@@ -5077,9 +5003,6 @@ static void CG_DrawCrosshair( vec3_t worldPoint, int chEntValid ) {
 					ecolor[0] = 1.0;//R
 					ecolor[1] = 0.0;//G
 					ecolor[2] = 0.0;//B
-#ifdef _XBOX
-					cg_crossHairStatus = 1;
-#endif
 				}
 			}
 			else if (crossEnt->currentState.eType == ET_MOVER && crossEnt->currentState.bolt1 && cg.predictedPlayerState.weapon == WP_SABER)
@@ -5103,9 +5026,6 @@ static void CG_DrawCrosshair( vec3_t worldPoint, int chEntValid ) {
 					ecolor[0] = 1.0;//R
 					ecolor[1] = 0.0;//G
 					ecolor[2] = 0.0;//B
-#ifdef _XBOX
-					cg_crossHairStatus = 1;
-#endif
 				}
 				else
 				{ //my team
@@ -5133,9 +5053,6 @@ static void CG_DrawCrosshair( vec3_t worldPoint, int chEntValid ) {
 					ecolor[0] = 1.0f;
 					ecolor[1] = 0.0f;
 					ecolor[2] = 0.0f;
-#ifdef _XBOX
-					cg_crossHairStatus = 1;
-#endif
 				}
 			}
 

@@ -896,11 +896,6 @@ void CG_GetCTFMessageEvent(entityState_t *es)
 qboolean BG_InKnockDownOnly( int anim );
 #include "../namespace_end.h"
 
-//JLFRUMBLE
-#ifdef _XBOX
-extern void FF_XboxDamage(int damage, float xpos);
-#endif
-
 void DoFall(centity_t *cent, entityState_t *es, int clientNum)
 {
 	int delta = es->eventParm;
