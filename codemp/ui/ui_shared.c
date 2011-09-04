@@ -4,9 +4,6 @@
 #ifndef CGAME
 	#include "ui_local.h"
 #endif
-#ifdef _XBOX
-#include "../client/client.h"
-#endif
 
 #include "ui_shared.h"
 #include "../game/bg_public.h"
@@ -32,10 +29,6 @@ typedef struct scrollInfo_s {
 	qboolean scrollDir;
 } scrollInfo_t;
 
-#ifdef _XBOX
-//extern void *Z_Malloc(int iSize, memtag_t eTag, qboolean bZeroit, int iAlign);
-//extern void Z_TagFree(memtag_t eTag);
-#endif
 
 
 #ifndef CGAME	// Defined in ui_main.c, not in the namespace
@@ -63,34 +56,6 @@ extern void trap_Key_SetCatcher( int catcher );
 extern void trap_Cvar_Set( const char *var_name, const char *value );
 
 #endif
-
-//JLF DEMOCODE
-#ifdef _XBOX
-
-//support for attract mode demo timer
-#define DEMO_TIME_MAX  45000 //g_demoTimeBeforeStart
-int g_demoLastKeypress = 0;  //milliseconds
-bool  g_ReturnToSplash = false;
-bool g_runningDemo = false;
-
-void G_DemoStart();
-void G_DemoEnd();
-void G_DemoFrame();
-void G_DemoKeypress();
-
-void PlayDemo();
-//void UpdateDemoTimer();
-bool TestDemoTimer();
-//END DEMOCODE
-
-//JLF used by sliders
-#define TICK_COUNT 20
-
-//JLF MORE PROTOTYPES
-qboolean Item_HandleSelectionNext(itemDef_t * item);
-qboolean Item_HandleSelectionPrev(itemDef_t * item);
-
-#endif	// _XBOX
 
 qboolean Item_SetFocus(itemDef_t *item, float x, float y);
 
@@ -142,10 +107,7 @@ extern qboolean ItemParse_model_g2anim_go( itemDef_t *item, const char *animName
 #define	UI_ALLOCATION_TAG	TAG_UI_ALLOC
 #endif
 
-#ifndef _XBOX
 static char		memoryPool[MEM_POOL_SIZE];
-#endif // _XBOX
-
 static int		allocPoint, outOfMemory;
 
 
@@ -207,13 +169,6 @@ UI_Alloc
 ===============
 */
 void *UI_Alloc( int size ) {
-#ifdef _XBOX
-
-	allocPoint += size;
-	return Z_Malloc(size, UI_ALLOCATION_TAG, qfalse, 4);
-
-#else	// _XBOX
-
 	char	*p; 
 
 	if ( allocPoint + size > MEM_POOL_SIZE ) {
@@ -230,7 +185,6 @@ void *UI_Alloc( int size ) {
 	allocPoint += ( size + 15 ) & ~15;
 
 	return p;
-#endif
 }
 
 /*
@@ -241,9 +195,6 @@ UI_InitMemory
 void UI_InitMemory( void ) {
 	allocPoint = 0;
 	outOfMemory = qfalse;
-#ifdef _XBOX
-	Z_TagFree(UI_ALLOCATION_TAG);
-#endif
 }
 
 qboolean UI_OutOfMemory() {
@@ -1962,15 +1913,7 @@ qboolean Script_SetFocus(itemDef_t *item, char **args)
     focusItem = Menu_FindItemByName((menuDef_t *) item->parent, name);
     if (focusItem && !(focusItem->window.flags & WINDOW_DECORATION) && !(focusItem->window.flags & WINDOW_HASFOCUS)) {
       Menu_ClearFocus((menuDef_t *) item->parent);
-//JLF
-#ifdef _XBOX
-			Item_SetFocus(focusItem, 0,0); 
-#else
-			focusItem->window.flags |= WINDOW_HASFOCUS;
-#endif
-//END JLF
-
-      
+	  focusItem->window.flags |= WINDOW_HASFOCUS;
       if (focusItem->onFocus) {
         Item_RunScript(focusItem, focusItem->onFocus);
       }
@@ -2432,10 +2375,7 @@ qboolean Item_SetFocus(itemDef_t *item, float x, float y) {
 		r = item->textRect;
 		r.y -= r.h;
 
-//JLFMOUSE
-#ifndef _XBOX
 		if (Rect_ContainsPoint(&r, x, y)) 
-#endif
 		{
 			item->window.flags |= WINDOW_HASFOCUS;
 			if (item->focusSound) {
@@ -2443,9 +2383,7 @@ qboolean Item_SetFocus(itemDef_t *item, float x, float y) {
 			}
 			playSound = qtrue;
 		}
-#ifndef _XBOX
 		else 
-#endif
 		{
 			if (oldFocus) {
 				oldFocus->window.flags |= WINDOW_HASFOCUS;
@@ -3048,12 +2986,7 @@ void Item_MouseEnter(itemDef_t *item, float x, float y) {
 			return;
 		}
 
-//JLFMOUSE 
-#ifndef _XBOX
 		if (Rect_ContainsPoint(&r, x, y)) 
-#else
-		if (item->flags & WINDOW_HASFOCUS)
-#endif
 		{
 			if (!(item->window.flags & WINDOW_MOUSEOVERTEXT)) {
 				Item_RunScript(item, item->mouseEnterText);
@@ -3162,71 +3095,12 @@ qboolean Item_OwnerDraw_HandleKey(itemDef_t *item, int key) {
 }
 
 
-#ifdef _XBOX
-// Xbox-only key handlers
-
-//JLF new func
-qboolean Item_Button_HandleKey(itemDef_t *item, int key) 
-{
-	if ( key == A_CURSOR_RIGHT)
-	{
-		if (Item_HandleSelectionNext(item))
-		{
-			//Item processed it 
-			return qtrue;
-		}
-	}
-	else if ( key ==  A_CURSOR_LEFT)
-	{
-		if (Item_HandleSelectionPrev(item))
-		{
-			//Item processed it 
-			return qtrue;
-		}
-	}
-	return qfalse;
-}
-
-/*
-=================
-Item_Text_HandleKey
-=================
-*/
-qboolean Item_Text_HandleKey(itemDef_t *item, int key) 
-{
-//JLFSELECTIONRightLeft
-	if ( key == A_CURSOR_RIGHT)
-	{
-		if (Item_HandleSelectionNext(item))
-		{
-			//Item processed it 
-			return qtrue;
-		}
-	}
-	else if ( key ==  A_CURSOR_LEFT)
-	{
-		if (Item_HandleSelectionPrev(item))
-		{
-			//Item processed it 
-			return qtrue;
-		}
-	}
-	return qfalse;
-}
-
-#endif // _XBOX
-
-
 qboolean Item_ListBox_HandleKey(itemDef_t *item, int key, qboolean down, qboolean force) {
 	listBoxDef_t *listPtr = (listBoxDef_t*)item->typeData;
 	int count = DC->feederCount(item->special);
 	int max, viewmax;
-//JLFMOUSE
-#ifndef _XBOX
+
 	if (force || (Rect_ContainsPoint(&item->window.rect, DC->cursorx, DC->cursory) && item->window.flags & WINDOW_HASFOCUS))
-#else
-	if (force || item->window.flags & WINDOW_HASFOCUS)
-#endif
 	{
 		max = Item_ListBox_MaxScroll(item);
 		if (item->window.flags & WINDOW_HORIZONTAL) {
@@ -3235,19 +3109,14 @@ qboolean Item_ListBox_HandleKey(itemDef_t *item, int key, qboolean down, qboolea
 			{
 				if (!listPtr->notselectable) {
 					listPtr->cursorPos--;
-#ifdef _XBOX
-					listPtr->startPos--;
-#endif
+
 					if (listPtr->cursorPos < 0) {
 						listPtr->cursorPos = 0;
 						return qfalse;
 					}
 					if (listPtr->cursorPos < listPtr->startPos) {
 						listPtr->startPos = listPtr->cursorPos;
-//JLF
-#ifndef _XBOX
 						return qfalse;
-#endif
 					}
 					if (listPtr->cursorPos >= listPtr->startPos + viewmax) {
 						listPtr->startPos = listPtr->cursorPos - viewmax + 1;
@@ -3268,10 +3137,7 @@ qboolean Item_ListBox_HandleKey(itemDef_t *item, int key, qboolean down, qboolea
 					listPtr->cursorPos++;
 					if (listPtr->cursorPos < listPtr->startPos) {
 						listPtr->startPos = listPtr->cursorPos;
-//JLF
-#ifndef _XBOX
 						return qfalse;
-#endif
 					}
 					if (listPtr->cursorPos >= count) {
 						listPtr->cursorPos = count-1;
@@ -3314,10 +3180,7 @@ qboolean Item_ListBox_HandleKey(itemDef_t *item, int key, qboolean down, qboolea
 					}
 					if (listPtr->cursorPos < listPtr->startPos) {
 						listPtr->startPos = listPtr->cursorPos;
-//JLF
-#ifndef _XBOX
 						return qfalse;
-#endif
 					}
 					if (listPtr->cursorPos >= listPtr->startPos + viewmax) {
 						listPtr->startPos = listPtr->cursorPos - viewmax + 1;
@@ -3338,10 +3201,7 @@ qboolean Item_ListBox_HandleKey(itemDef_t *item, int key, qboolean down, qboolea
 					listPtr->cursorPos++;
 					if (listPtr->cursorPos < listPtr->startPos) {
 						listPtr->startPos = listPtr->cursorPos;
-//JLF
-#ifndef _XBOX
 						return qfalse;
-#endif
 					}
 					if (listPtr->cursorPos >= count) {
 						listPtr->cursorPos = count-1;
@@ -3390,11 +3250,7 @@ qboolean Item_ListBox_HandleKey(itemDef_t *item, int key, qboolean down, qboolea
 				// Display_SetCaptureItem(item);
 			} else {
 				// select an item
-#ifdef _XBOX
-				if (listPtr->doubleClick) {
-#else
 				if (DC->realTime < lastListBoxClickTime && listPtr->doubleClick) {
-#endif
 					Item_RunScript(item, listPtr->doubleClick);
 				}
 				lastListBoxClickTime = DC->realTime + DOUBLE_CLICK_DELAY;
@@ -3474,31 +3330,18 @@ qboolean Item_ListBox_HandleKey(itemDef_t *item, int key, qboolean down, qboolea
 	return qfalse;
 }
 
-qboolean Item_YesNo_HandleKey(itemDef_t *item, int key) {
-//JLFMOUSE MPMOVED
-#ifndef _XBOX
-  if (Rect_ContainsPoint(&item->window.rect, DC->cursorx, DC->cursory) && item->window.flags & WINDOW_HASFOCUS && item->cvar) 
-#else
-	if (item->window.flags & WINDOW_HASFOCUS && item->cvar) 
-#endif
+qboolean Item_YesNo_HandleKey(itemDef_t *item, int key)
+{
+	if (Rect_ContainsPoint(&item->window.rect, DC->cursorx, DC->cursory) && item->window.flags & WINDOW_HASFOCUS && item->cvar) 
 	{
-
-//JLFDPAD MPMOVED
-#ifndef _XBOX
 		if (key == A_MOUSE1 || key == A_ENTER || key == A_MOUSE2 || key == A_MOUSE3) 
-#else
-		if ( key == A_CURSOR_RIGHT || key == A_CURSOR_LEFT)
-#endif
-//end JLFDPAD
-
 		{
-	    DC->setCVar(item->cvar, va("%i", !DC->getCVarValue(item->cvar)));
-		  return qtrue;
+			DC->setCVar(item->cvar, va("%i", !DC->getCVarValue(item->cvar)));
+			return qtrue;
 		}
-  }
+	}
 
-  return qfalse;
-
+	return qfalse;
 }
 
 int Item_Multi_CountSettings(itemDef_t *item) {
