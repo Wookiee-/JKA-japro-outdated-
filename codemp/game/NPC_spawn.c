@@ -1290,14 +1290,6 @@ gNPC_t *New_NPC_t(int entNum)
 	return ptr;
 }
 
-#ifdef _XBOX
-void NPC_NPCPtrsClear(void)
-{
-	for(int i=0; i<MAX_GENTITIES; i++) {
-		gNPCPtrs[i] = NULL;
-	}
-}
-#endif
 
 /*
 -------------------------
