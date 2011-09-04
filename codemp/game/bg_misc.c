@@ -24,8 +24,6 @@
 extern void Q3_SetParm (int entID, int parmNum, const char *parmValue);
 #endif
 
-#include "../namespace_begin.h"
-
 const char *bgToggleableSurfaces[BG_NUM_TOGGLEABLE_SURFACES] = 
 {
 	"l_arm_key",					//0
@@ -329,17 +327,11 @@ qboolean BG_FileExists(const char *fileName)
 
 #ifndef UI_EXPORTS //don't need this stuff in the ui
 
-// Following functions don't need to be in namespace, they're already
-// different per-module
-#include "../namespace_end.h"
-
 #ifdef QAGAME
 char *G_NewString( const char *string );
 #else
 char *CG_NewString( const char *string );
 #endif
-
-#include "../namespace_begin.h"
 
 /*
 ===============
@@ -3303,5 +3295,3 @@ qboolean BG_OutOfMemory ( void )
 {
 	return bg_poolSize >= MAX_POOL_SIZE;
 }
-
-#include "../namespace_end.h"
