@@ -982,8 +982,6 @@ int PM_SaberLockWinAnim( qboolean victory, qboolean superBreak )
 	return winAnim;
 }
 
-// Need to avoid nesting namespaces!
-
 #ifdef QAGAME //including game headers on cgame is FORBIDDEN ^_^
 
 #include "g_local.h"

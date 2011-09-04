@@ -20,7 +20,6 @@ output: origin, velocity, impacts, stairup boolean
 
 
 //do vehicle impact stuff
-// slight rearrangement by BTO (VV) so that we only have one namespace include
 #ifdef QAGAME
 extern void G_FlyVehicleSurfaceDestruction(gentity_t *veh, trace_t *trace, int magnitude, qboolean force ); //g_vehicle.c
 extern qboolean G_CanBeEnemy(gentity_t *self, gentity_t *enemy); //w_saber.c

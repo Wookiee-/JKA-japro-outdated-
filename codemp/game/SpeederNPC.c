@@ -1078,17 +1078,8 @@ void G_SetSpeederVehicleFunctions( vehicleInfo_t *pVehInfo )
 //	pVehInfo->Inhabited					=		Inhabited;
 }
 
-// Following is only in game, not in namespace
-#ifdef _JK2MP
-
-#endif
-
 #ifdef QAGAME
 extern void G_AllocateVehicleObject(Vehicle_t **pVeh);
-#endif
-
-#ifdef _JK2MP
-
 #endif
 
 // Create/Allocate a new Animal Vehicle (initializing it as well).
