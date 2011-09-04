@@ -119,7 +119,7 @@ static bool Board( Vehicle_t *pVeh, bgEntity_t *pEnt )
 #endif //QAGAME
 
 #ifdef _JK2MP
-#include "../namespace_begin.h"
+
 #endif
 
 //MP RULE - ALL PROCESSMOVECOMMANDS FUNCTIONS MUST BE BG-COMPATIBLE!!!
@@ -581,7 +581,7 @@ void G_SetWalkerVehicleFunctions( vehicleInfo_t *pVehInfo )
 
 // Following is only in game, not in namespace
 #ifdef _JK2MP
-#include "../namespace_end.h"
+
 #endif
 
 #ifdef QAGAME
@@ -589,7 +589,7 @@ extern void G_AllocateVehicleObject(Vehicle_t **pVeh);
 #endif
 
 #ifdef _JK2MP
-#include "../namespace_begin.h"
+
 #endif
 
 // Create/Allocate a new Animal Vehicle (initializing it as well).
@@ -619,7 +619,7 @@ void G_CreateWalkerNPC( Vehicle_t **pVeh, const char *strAnimalType )
 
 #ifdef _JK2MP
 
-#include "../namespace_end.h"
+
 
 //get rid of all the crazy defs we added for this file
 #undef currentAngles
