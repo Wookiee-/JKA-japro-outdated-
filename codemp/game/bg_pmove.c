@@ -7779,7 +7779,6 @@ static void PM_DropTimers( void ) {
 
 #include "../namespace_end.h"
 
-#if !defined(_XBOX) || defined(QAGAME)
 extern	vmCvar_t	bg_fighterAltControl;
 qboolean BG_UnrestrainedPitchRoll( playerState_t *ps, Vehicle_t *pVeh )
 {
@@ -7796,9 +7795,6 @@ qboolean BG_UnrestrainedPitchRoll( playerState_t *ps, Vehicle_t *pVeh )
 	}
 	return qfalse;
 }
-#else
-extern qboolean BG_UnrestrainedPitchRoll( playerState_t *ps, Vehicle_t *pVeh );
-#endif
 
 #include "../namespace_begin.h"
 
