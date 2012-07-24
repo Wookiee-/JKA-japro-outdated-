@@ -123,7 +123,7 @@ NPC_GetMoveInformation
 -------------------------
 */
 
-ID_INLINE qboolean NPC_GetMoveInformation( vec3_t dir, float *distance )
+static ID_INLINE qboolean NPC_GetMoveInformation( vec3_t dir, float *distance )
 {
 	//NOTENOTE: Use path stacks!
 
