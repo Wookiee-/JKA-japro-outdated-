@@ -235,15 +235,8 @@ qboolean BG_KnockDownable(playerState_t *ps)
 	return qtrue;
 }
 
-//I should probably just do a global inline sometime.
-#ifndef __LCC__
-#define PM_INLINE ID_INLINE
-#else
-#define PM_INLINE //none
-#endif
-
 //hacky assumption check, assume any client non-humanoid is a rocket trooper
-qboolean PM_INLINE PM_IsRocketTrooper(void)
+qboolean ID_INLINE PM_IsRocketTrooper(void)
 {
 	/*
 	if (pm->ps->clientNum < MAX_CLIENTS &&
