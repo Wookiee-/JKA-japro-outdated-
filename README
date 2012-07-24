@@ -3,4 +3,12 @@ It is open source and can be used for open source projects or closed source proj
 It includes bug fixes and security fixes that the sdk lacks.
 
 Current Supported Platforms:
-Microsoft Visual Studio C++ 2010
+Win32 with Microsoft Visual Studio C++ 2010 (cgame, game, ui)
+Linux with GCC (game)
+
+To build with GCC & Linux:
+  $ cd codemp/game
+  $ make
+
+To clean up:
+  $ make clean
