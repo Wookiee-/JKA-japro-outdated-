@@ -7,8 +7,8 @@ Win32 with Microsoft Visual Studio C++ 2010 (cgame, game, ui)
 Linux with GCC (game)
 
 To build with GCC & Linux:
-  $ cd codemp/game
-  $ make
+$ cd codemp/game
+$ make
 
 To clean up:
-  $ make clean
+$ make clean
