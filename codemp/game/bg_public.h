@@ -374,7 +374,7 @@ typedef enum {
 } weaponstate_t;
 
 
-typedef enum {
+enum {
 	FORCE_MASTERY_UNINITIATED,
 	FORCE_MASTERY_INITIATE,
 	FORCE_MASTERY_PADAWAN,
