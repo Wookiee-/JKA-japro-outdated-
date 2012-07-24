@@ -1330,13 +1330,10 @@ typedef struct {
 #define VectorSet5(v,x,y,z,a,b)	((v)[0]=(x), (v)[1]=(y), (v)[2]=(z), (v)[3]=(a), (v)[4]=(b)) //rwwRMG - added
 #define Vector4Copy(a,b)		((b)[0]=(a)[0],(b)[1]=(a)[1],(b)[2]=(a)[2],(b)[3]=(a)[3])
 
-#ifdef __linux__
-#define	SnapVector(v) {v[0]=((int)(v[0]));v[1]=((int)(v[1]));v[2]=((int)(v[2]));}
-#else 
-#ifndef __LCC__
-//pitiful attempt to reduce _ftol2 calls -rww
-static ID_INLINE void SnapVector( float *v )
+static ID_INLINE void SnapVector(float *v)
 {
+#ifdef _MSC_VER
+	//pitiful attempt to reduce _ftol2 calls -rww
 	static int i;
 	static float f;
 
@@ -1354,11 +1351,12 @@ static ID_INLINE void SnapVector( float *v )
 	__asm	fld		f;
 	__asm	fistp	i;
 	*v = i;
-}
 #else
-#define	SnapVector(v) {v[0]=((int)(v[0]));v[1]=((int)(v[1]));v[2]=((int)(v[2]));}
-#endif // __LCC__
-#endif // __linux__
+	v[0]=((int)(v[0]));
+	v[1]=((int)(v[1]));
+	v[2]=((int)(v[2]));
+#endif
+}
 
 // just in case you do't want to use the macros
 vec_t _DotProduct( const vec3_t v1, const vec3_t v2 );
