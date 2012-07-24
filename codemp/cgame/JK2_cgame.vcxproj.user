@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">
+    <LocalDebuggerCommand>C:\Program Files (x86)\LucasArts\Star Wars Jedi Knight Jedi Academy\GameData\jamp.exe</LocalDebuggerCommand>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">
+    <LocalDebuggerCommandArguments>+set fs_cdpath "C:\Program Files (x86)\LucasArts\Star Wars Jedi Knight Jedi Academy\GameData" +set fs_dirbeforepak 1 +set sv_pure 0 +set r_fullscreen 0 +set viewlog 1</LocalDebuggerCommandArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Final|Win32'">
+    <LocalDebuggerWorkingDirectory>$(ProjectDir)..\Final</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LocalDebuggerCommand>C:\Program Files (x86)\LucasArts\Star Wars Jedi Knight Jedi Academy\GameData\jamp.exe</LocalDebuggerCommand>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LocalDebuggerCommandArguments>+set fs_cdpath "C:\Program Files (x86)\LucasArts\Star Wars Jedi Knight Jedi Academy\GameData" +set fs_dirbeforepak 1 +set sv_pure 0 +set r_fullscreen 0 +set viewlog 1</LocalDebuggerCommandArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LocalDebuggerWorkingDirectory>$(ProjectDir)..\Debug</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+</Project>
