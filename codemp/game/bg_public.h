@@ -1000,7 +1000,7 @@ typedef enum {
 
 
 
-typedef enum {
+enum {
 	TEAM_FREE,
 	TEAM_RED,
 	TEAM_BLUE,
