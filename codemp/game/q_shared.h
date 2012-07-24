@@ -2798,7 +2798,7 @@ enum {
 };
 typedef int e_status;
 
-typedef enum _flag_status {
+enum {
 	FLAG_ATBASE = 0,
 	FLAG_TAKEN,			// CTF
 	FLAG_TAKEN_RED,		// One Flag CTF
