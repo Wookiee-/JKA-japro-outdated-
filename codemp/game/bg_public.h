@@ -643,7 +643,7 @@ typedef enum {
 } effectTypes_t;
 
 // NOTE: may not have more than 16
-typedef enum {
+enum {
 	PW_NONE,
 
 	PW_QUAD,
