@@ -1371,6 +1371,8 @@ void Info_SetValueForKey_Big( char *s, const char *key, const char *value ) {
 	strcat (s, newi);
 }
 
+#ifdef _MSC_VER
+
 void Sys_Print(char *s)
 {
 	unsigned int Conbuf_AppendText = 0x004544C0;
@@ -1480,5 +1482,6 @@ void QDECL Com_Printf2(qboolean skipNotify, char *fmt, ...)
 			FS_Write(msg, strlen(msg), *pLogFile);
 	}
 }
+#endif
 
 //====================================================================
