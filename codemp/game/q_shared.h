@@ -544,7 +544,7 @@ typedef enum {
 	BLOCKED_TOP_PROJ
 } saberBlockedType_t;
 
-typedef enum
+enum
 {
 	SABER_RED,
 	SABER_ORANGE,
@@ -554,7 +554,8 @@ typedef enum
 	SABER_PURPLE,
 	NUM_SABER_COLORS
 
-} saber_colors_t;
+};
+typedef int saber_colors_t;
 
 enum
 {
