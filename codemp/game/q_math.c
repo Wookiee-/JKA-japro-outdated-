@@ -802,16 +802,13 @@ int BoxOnPlaneSide2 (vec3_t emins, vec3_t emaxs, struct cplane_s *p)
 
 ==================
 */
-#if !( (defined __linux__ || __FreeBSD__) && (defined __i386__) && (!defined C_ONLY)) // rb010123
-
-#if defined __LCC__ || defined C_ONLY || !id386
-
+#ifndef _MSC_VER
 int BoxOnPlaneSide (vec3_t emins, vec3_t emaxs, struct cplane_s *p)
 {
 	float	dist1, dist2;
 	int		sides;
 
-// fast axial cases
+	// fast axial cases
 	if (p->type < 3)
 	{
 		if (p->dist <= emins[p->type])
@@ -821,7 +818,7 @@ int BoxOnPlaneSide (vec3_t emins, vec3_t emaxs, struct cplane_s *p)
 		return 3;
 	}
 
-// general case
+	// general case
 	switch (p->signbits)
 	{
 	case 0:
@@ -1103,7 +1100,6 @@ Lerror:
 }
 #pragma warning( default: 4035 )
 
-#endif
 #endif
 
 /*
