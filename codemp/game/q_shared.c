@@ -1371,9 +1371,9 @@ void Info_SetValueForKey_Big( char *s, const char *key, const char *value ) {
 	strcat (s, newi);
 }
 
-#ifdef _MSC_VER
+#if defined(CGAME) && defined(_MSC_VER)
 
-void Sys_Print(char *s)
+static void Sys_Print(char *s)
 {
 	unsigned int Conbuf_AppendText = 0x004544C0;
 
@@ -1386,7 +1386,7 @@ void Sys_Print(char *s)
 	}
 }
 
-fileHandle_t FS_FOpenFileWrite(const char *file)
+static fileHandle_t FS_FOpenFileWrite(const char *file)
 {
 	unsigned int address = 0x0043B250;
 	fileHandle_t handle;
@@ -1403,7 +1403,7 @@ fileHandle_t FS_FOpenFileWrite(const char *file)
 	return handle;
 }
 
-void FS_ForceFlush(fileHandle_t handle)
+static void FS_ForceFlush(fileHandle_t handle)
 {
 	unsigned int address = 0x0043ABA0;
 
@@ -1416,7 +1416,7 @@ void FS_ForceFlush(fileHandle_t handle)
 	}
 }
 
-qboolean FS_Initialized()
+static qboolean FS_Initialized()
 {
 	unsigned int **pfs_searchPaths = (unsigned int **) 0x00B65EC0;
 	

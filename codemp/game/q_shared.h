@@ -1693,7 +1693,9 @@ void Info_NextPair( const char **s, char *key, char *value );
 // this is only here so the functions in q_shared.c and bg_*.c can link
 void	QDECL Com_Error( int level, const char *error, ... );
 void	QDECL Com_Printf( const char *msg, ... );
+#if defined(CGAME) && defined(_MSC_VER)
 void	QDECL Com_Printf2(qboolean skipNotify, char *fmt, ...);
+#endif
 
 
 /*
