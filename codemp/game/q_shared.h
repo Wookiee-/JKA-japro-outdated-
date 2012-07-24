@@ -2854,7 +2854,7 @@ Ghoul2 Insert End
 // define the new memory tags for the zone, used by all modules now
 //
 #define TAGDEF(blah) TAG_ ## blah
-typedef enum {
+enum {
 	#include "../qcommon/tags.h"
 };
 typedef char memtag_t;
