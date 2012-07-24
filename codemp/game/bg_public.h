@@ -677,7 +677,7 @@ enum {
 };
 typedef int powerup_t;
 
-typedef enum {
+enum {
 	HI_NONE,
 
 	HI_SEEKER,
