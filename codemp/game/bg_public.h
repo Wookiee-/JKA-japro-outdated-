@@ -202,7 +202,7 @@ extern vec3_t WP_MuzzlePoint[WP_NUM_WEAPONS];
 
 extern int forcePowerSorted[NUM_FORCE_POWERS];
 
-typedef enum
+enum
 {
 	SABERLOCK_TOP,
 	SABERLOCK_SIDE,
@@ -213,7 +213,7 @@ typedef enum
 	SABERLOCK_LOSE
 };
 
-typedef enum
+enum
 {
 	DIR_RIGHT,
 	DIR_LEFT,
