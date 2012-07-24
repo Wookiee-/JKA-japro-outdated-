@@ -808,7 +808,7 @@ typedef struct
 } saberInfo_t;
 #define MAX_SABERS 2
 
-typedef enum
+enum
 {
 	FORCE_LEVEL_0,
 	FORCE_LEVEL_1,
