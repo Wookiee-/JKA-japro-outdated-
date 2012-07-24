@@ -1278,7 +1278,7 @@ typedef struct
 #undef LS_NONE
 #endif
 
-typedef enum {
+enum {
 	//totally invalid
 	LS_INVALID	= -1,
 	// Invalid, or saber not armed
