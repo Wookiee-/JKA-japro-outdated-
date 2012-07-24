@@ -934,7 +934,7 @@ enum sharedEIKMoveState
 };
 
 //material stuff needs to be shared
-typedef enum //# material_e
+enum //# material_e
 {
 	MAT_METAL = 0,	// scorched blue-grey metal
 	MAT_GLASS,		// not a real chunk type, just plays an effect with glass sprites
