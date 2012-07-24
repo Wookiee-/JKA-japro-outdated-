@@ -178,7 +178,7 @@ typedef enum
 //for supplier class items
 #define TOSS_DEBOUNCE_TIME				5000
 
-typedef enum {
+enum {
 	GT_FFA,				// free for all
 	GT_HOLOCRON,		// holocron ffa
 	GT_JEDIMASTER,		// jedi master
