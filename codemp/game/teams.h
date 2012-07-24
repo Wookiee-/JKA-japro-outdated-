@@ -1,7 +1,7 @@
 #ifndef TEAMS_H
 #define TEAMS_H
 
-typedef enum
+enum
 {
 	NPCTEAM_FREE,			// also TEAM_FREE - caution, some code checks a team_t via "if (!team_t_varname)" so I guess this should stay as entry 0, great or what? -slc
 	NPCTEAM_ENEMY,			// also TEAM_RED
@@ -10,7 +10,8 @@ typedef enum
 
 	//# #eol
 	NPCTEAM_NUM_TEAMS
-} npcteam_t;
+};
+typedef int npcteam_t;
 
 // This list is made up from the model directories, this MUST be in the same order as the ClassNames array in NPC_stats.cpp
 typedef enum 
