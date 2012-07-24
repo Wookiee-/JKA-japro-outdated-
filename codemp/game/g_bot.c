@@ -521,43 +521,42 @@ int G_CountHumanPlayers(int team)
 G_CountBotPlayers
 ===============
 */
-int G_CountBotPlayers( int team ) {
-	int i, n, num;
-	gclient_t	*cl;
+int G_CountBotPlayers(int team)
+{
+	int i, count;
+	gclient_t *client;
 
-	num = 0;
-	for ( i=0 ; i< g_maxclients.integer ; i++ ) {
-		cl = level.clients + i;
-		if ( cl->pers.connected != CON_CONNECTED ) {
+	for (i = 0, count = 0; i < level.maxclients; ++i)
+	{
+		client = level.clients + i;
+
+		// must be connected
+		if (client->pers.connected != CON_CONNECTED)
 			continue;
-		}
-		if ( !(g_entities[cl->ps.clientNum].r.svFlags & SVF_BOT) ) {
+
+		// must be a bot
+		if (!(g_entities[i].r.svFlags & SVF_BOT))
 			continue;
-		}
-		if (g_gametype.integer == GT_SIEGE)
-		{
-			if ( team >= 0 && cl->sess.siegeDesiredTeam != team ) {
-				continue;
-			}
-		}
-		else
-		{
-			if ( team >= 0 && cl->sess.sessionTeam != team ) {
-				continue;
-			}
-		}
-		num++;
+
+		// if team is specified, must match a team
+		if (team >= 0 && (g_gametype.integer == GT_SIEGE && team != client->sess.siegeDesiredTeam || team != client->sess.sessionTeam))
+			continue;
+
+		++count;
 	}
-	for( n = 0; n < BOT_SPAWN_QUEUE_DEPTH; n++ ) {
-		if( !botSpawnQueue[n].spawnTime ) {
+
+	for (i = 0; i < BOT_SPAWN_QUEUE_DEPTH; ++i)
+	{
+		if (!botSpawnQueue[i].spawnTime)
 			continue;
-		}
-		if ( botSpawnQueue[n].spawnTime > level.time ) {
+
+		if (botSpawnQueue[i].spawnTime > level.time)
 			continue;
-		}
-		num++;
+
+		++count;
 	}
-	return num;
+
+	return count;
 }
 
 /*
