@@ -363,7 +363,7 @@ struct gentity_s {
 #define DAMAGEREDIRECT_RLEG		2
 #define DAMAGEREDIRECT_LLEG		3
 
-typedef enum {
+enum {
 	CON_DISCONNECTED,
 	CON_CONNECTING,
 	CON_CONNECTED
