@@ -556,7 +556,7 @@ typedef enum
 
 } saber_colors_t;
 
-typedef enum
+enum
 {
 	FP_FIRST = 0,//marker
 	FP_HEAL = 0,//instant
@@ -578,7 +578,8 @@ typedef enum
 	FP_SABER_DEFENSE,
 	FP_SABERTHROW,
 	NUM_FORCE_POWERS
-} forcePowers_t;
+};
+typedef int forcePowers_t;
 
 typedef enum
 {
