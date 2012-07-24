@@ -2787,7 +2787,7 @@ typedef struct qtime_s {
 #define AS_MPLAYER			3 // (Obsolete)
 
 // cinematic states
-typedef enum {
+enum {
 	FMV_IDLE,
 	FMV_PLAY,		// play
 	FMV_EOF,		// all other conditions, i.e. stop/EOF/abort
