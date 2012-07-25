@@ -1293,6 +1293,7 @@ qboolean G_FilterPacket (char *from);
 //
 void FireWeapon( gentity_t *ent, qboolean altFire );
 void BlowDetpacks(gentity_t *ent);
+void FreeMines(const gentity_t * const owner);
 
 //
 // p_hud.c

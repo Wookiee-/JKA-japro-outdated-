@@ -3979,6 +3979,9 @@ void ClientDisconnect( int clientNum ) {
 		i++;
 	}
 
+	// Remove placed mines
+	FreeMines(ent);
+
 	trap_UnlinkEntity (ent);
 	ent->s.modelindex = 0;
 	ent->inuse = qfalse;

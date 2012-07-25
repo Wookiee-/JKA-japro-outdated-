@@ -2528,6 +2528,26 @@ void CreateLaserTrap( gentity_t *laserTrap, vec3_t start, gentity_t *owner )
 	laserTrap->nextthink = level.time + 50;
 }
 
+/**
+ * Used to remove all tripmines and detpacks
+ * Useful to prevent exploiting in team gamemodes
+ */
+void FreeMines(const gentity_t * const owner)
+{
+	int i;
+
+	for (i = 0; i < MAX_GENTITIES; ++i)
+	{
+		gentity_t *ent = &g_entities[i];
+
+		if (ent->inuse
+			&& ent->parent == owner
+			&& (Q_stricmp(ent->classname, "laserTrap") == 0 
+			    || Q_stricmp(ent->classname, "detpack") == 0))
+			G_FreeEntity(ent);
+	}
+}
+
 void WP_PlaceLaserTrap( gentity_t *ent, qboolean alt_fire )
 {
 	gentity_t	*laserTrap;

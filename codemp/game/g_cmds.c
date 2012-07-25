@@ -913,6 +913,8 @@ void SetTeam( gentity_t *ent, char *s ) {
 
 	BroadcastTeamChange( client, oldTeam );
 
+	FreeMines(ent);
+
 	//make a disappearing effect where they were before teleporting them to the appropriate spawn point,
 	//if we were not on the spec team
 	if (oldTeam != TEAM_SPECTATOR)
