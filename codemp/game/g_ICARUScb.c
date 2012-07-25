@@ -4982,7 +4982,7 @@ Prints a message in the center of the screen giving it an LCARS frame around it
 */
 static void Q3_LCARSText ( const char *id)
 {
-	G_DebugPrint( WL_WARNING, "Q3_ScrollText: NOT SUPPORTED IN MP\n");
+	G_DebugPrint( WL_WARNING, "Q3_LCARSText: NOT SUPPORTED IN MP\n");
 	//trap_SendServerCommand( -1, va("lt \"%s\"", id));
 
 	return;
