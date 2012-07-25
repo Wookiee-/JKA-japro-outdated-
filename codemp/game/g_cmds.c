@@ -158,7 +158,7 @@ SanitizeString
 Remove case and control characters
 ==================
 */
-void SanitizeString( const char *in, char *out ) {
+static void SanitizeString( const char *in, char *out ) {
 	while ( *in ) {
 		if ( *in == 27 ) {
 			in += 2;		// skip color code
@@ -1820,7 +1820,7 @@ int G_ClientNumberFromName ( const char* name )
 	gclient_t*	cl;
 
 	// check for a name match
-	SanitizeString( (char*)name, s2 );
+	SanitizeString( name, s2 );
 	for ( i=0, cl=level.clients ; i < level.numConnectedClients ; i++, cl++ ) 
 	{
 		SanitizeString( cl->pers.netname, n2 );
@@ -1840,7 +1840,7 @@ SanitizeString2
 Rich's revised version of SanitizeString
 ==================
 */
-void SanitizeString2( char *in, char *out )
+static void SanitizeString2( const char *in, char *out )
 {
 	int i = 0;
 	int r = 0;
@@ -1895,7 +1895,7 @@ int G_ClientNumberFromStrippedName ( const char* name )
 	gclient_t*	cl;
 
 	// check for a name match
-	SanitizeString2( (char*)name, s2 );
+	SanitizeString2( name, s2 );
 	for ( i=0, cl=level.clients ; i < level.numConnectedClients ; i++, cl++ ) 
 	{
 		SanitizeString2( cl->pers.netname, n2 );
