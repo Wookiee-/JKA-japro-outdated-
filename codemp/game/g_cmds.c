@@ -2045,6 +2045,7 @@ void Cmd_CallVote_f( gentity_t *ent ) {
 	}
 	else if ( !Q_stricmp ( arg1, "kick" ) )
 	{
+		/*
 		int clientid = G_ClientNumberFromName ( arg2 );
 
 		if ( clientid == -1 )
@@ -2057,6 +2058,11 @@ void Cmd_CallVote_f( gentity_t *ent ) {
 				return;
 			}
 		}
+		*/
+		const int clientid = ClientNumberFromString(ent, arg2);
+
+		if (clientid == -1)
+			return;
 
 		Com_sprintf ( level.voteString, sizeof(level.voteString ), "clientkick %d", clientid );
 		Com_sprintf ( level.voteDisplayString, sizeof(level.voteDisplayString), "kick %s", g_entities[clientid].client->pers.netname );
