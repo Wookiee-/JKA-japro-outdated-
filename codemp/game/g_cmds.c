@@ -1524,6 +1524,16 @@ void G_Say( gentity_t *ent, gentity_t *target, int mode, const char *chatText ) 
 	// trim chat text
 	Q_strncpyz(text, chatText, sizeof(text));
 
+	{
+		// lets remove the ending \n if it exists
+		// the engine adds it for odd number of quotes
+		const size_t len = strlen(text);
+
+		if (text[len-1] == '\n') {
+			text[len-1] = 0;
+		}
+	}
+
 	// check for invalid characters
 	if (strchr(text, '\r') || strchr(text, '\n')) {
 		trap_SendServerCommand(ent-g_entities, "print \"Invalid chat text\n\"");
