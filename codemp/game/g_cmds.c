@@ -158,7 +158,7 @@ SanitizeString
 Remove case and control characters
 ==================
 */
-void SanitizeString( char *in, char *out ) {
+void SanitizeString( const char *in, char *out ) {
 	while ( *in ) {
 		if ( *in == 27 ) {
 			in += 2;		// skip color code
