@@ -674,10 +674,10 @@ void SetTeam( gentity_t *ent, char *s ) {
 	clientNum = client - level.clients;
 	specClient = 0;
 	specState = SPECTATOR_NOT;
-	if ( !Q_stricmp( s, "scoreboard" ) || !Q_stricmp( s, "score" )  ) {
+	/*if ( !Q_stricmp( s, "scoreboard" ) || !Q_stricmp( s, "score" )  ) {
 		team = TEAM_SPECTATOR;
 		specState = SPECTATOR_SCOREBOARD;
-	} else if ( !Q_stricmp( s, "follow1" ) ) {
+	} else*/ if ( !Q_stricmp( s, "follow1" ) ) {
 		team = TEAM_SPECTATOR;
 		specState = SPECTATOR_FOLLOW;
 		specClient = -1;
