@@ -1812,6 +1812,7 @@ G_ClientNumberFromName
 Finds the client number of the client with the given name
 ==================
 */
+/* FIXME
 int G_ClientNumberFromName ( const char* name )
 {
 	char		s2[MAX_STRING_CHARS];
@@ -1832,6 +1833,7 @@ int G_ClientNumberFromName ( const char* name )
 
 	return -1;
 }
+*/
 
 /*
 ==================
@@ -1887,6 +1889,7 @@ G_ClientNumberFromStrippedName
 Same as above, but strips special characters out of the names before comparing.
 ==================
 */
+/* FIXME
 int G_ClientNumberFromStrippedName ( const char* name )
 {
 	char		s2[MAX_STRING_CHARS];
@@ -1907,6 +1910,7 @@ int G_ClientNumberFromStrippedName ( const char* name )
 
 	return -1;
 }
+*/
 
 /*
 ==================
