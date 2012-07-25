@@ -182,7 +182,7 @@ Returns a player number for either a number or name string
 Returns -1 if invalid
 ==================
 */
-int ClientNumberFromString( gentity_t *to, char *s ) {
+static int ClientNumberFromString( gentity_t *to, const char *s ) {
 	gclient_t	*cl;
 	int			idnum;
 	char		s2[MAX_STRING_CHARS];
