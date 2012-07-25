@@ -1397,6 +1397,11 @@ void Cmd_Follow_f( gentity_t *ent ) {
 		return;
 	}
 
+	// can't follow a temp spectator
+	if ( level.clients[ i ].tempSpectate >= level.time ) {
+		return;
+	}
+
 	// if they are playing a tournement game, count as a loss
 	if ( (g_gametype.integer == GT_DUEL || g_gametype.integer == GT_POWERDUEL)
 		&& ent->client->sess.sessionTeam == TEAM_FREE ) {
@@ -1435,12 +1440,18 @@ void Cmd_FollowCycle_f(gentity_t *ent, int dir)
 
 	for (clientnum = ent->client->sess.spectatorClient, clientnum += dir, i = 0; i < level.maxclients; clientnum += dir, i += 1)
 	{
+		gclient_t *client;
+
 		if (clientnum >= level.maxclients)
 			clientnum = 0;
 		else if (clientnum < 0)
 			clientnum = level.maxclients - 1;
+
+		client = &level.clients[clientnum];
 		
-		if (level.clients[clientnum].pers.connected == CON_CONNECTED && level.clients[clientnum].sess.sessionTeam != TEAM_SPECTATOR)
+		if (client->pers.connected == CON_CONNECTED 
+			&& client->sess.sessionTeam != TEAM_SPECTATOR
+			&& client->tempSpectate < level.time)
 		{
 			// this is good, we can use it
 			ent->client->sess.spectatorClient = clientnum;
