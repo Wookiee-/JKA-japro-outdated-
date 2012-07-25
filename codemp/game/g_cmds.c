@@ -1654,8 +1654,8 @@ static void Cmd_Tell_f( gentity_t *ent ) {
 	}
 
 	trap_Argv( 1, arg, sizeof( arg ) );
-	targetNum = atoi( arg );
-	if ( targetNum < 0 || targetNum >= level.maxclients ) {
+	targetNum = ClientNumberFromString(ent, arg);
+	if ( targetNum == -1 ) {
 		return;
 	}
 
