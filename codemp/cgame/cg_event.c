@@ -3198,7 +3198,7 @@ void CG_EntityEvent( centity_t *cent, vec3_t position ) {
 				{ //add to the chat box
 					//hear it in the world spot.
 					char vchatstr[1024];
-					strcpy(vchatstr, va("<%s: %s>\n", ci->name, descr));
+					strcpy(vchatstr, va("<%s^7: %s>\n", ci->name, descr));
 					CG_Printf(vchatstr);
 					CG_ChatBox_AddString(vchatstr);
 				}
