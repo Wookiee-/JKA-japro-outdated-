@@ -982,7 +982,11 @@ void _UI_Refresh( int realtime )
 	// draw cursor
 	UI_SetColor( NULL );
 	if (Menu_Count() > 0) {
-		UI_DrawHandlePic( uiInfo.uiDC.cursorx, uiInfo.uiDC.cursory, 48, 48, uiInfo.uiDC.Assets.cursor);
+		uiClientState_t	cstate;
+		trap_GetClientState(&cstate);
+		if (cstate.connState <= CA_DISCONNECTED || cstate.connState >= CA_ACTIVE) {
+			UI_DrawHandlePic(uiInfo.uiDC.cursorx, uiInfo.uiDC.cursory, 48, 48, uiInfo.uiDC.Assets.cursor);
+		}
 	}
 
 #ifndef NDEBUG
