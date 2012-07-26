@@ -1542,7 +1542,7 @@ void G_Say( gentity_t *ent, gentity_t *target, int mode, const char *chatText ) 
 		// the engine adds it for odd number of quotes
 		const size_t len = strlen(text);
 
-		if (text[len-1] == '\n') {
+		if (len && text[len-1] == '\n') {
 			text[len-1] = 0;
 		}
 	}
