@@ -12,3 +12,6 @@ $ make
 
 To clean up:
 $ make clean
+
+New Commands:
+showplayerid - Display a list of players on server and their associated numbers
