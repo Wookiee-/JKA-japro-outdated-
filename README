@@ -13,5 +13,8 @@ $ make
 To clean up:
 $ make clean
 
-New Commands:
+New Game Commands:
 showplayerid - Display a list of players on server and their associated numbers
+
+New Game Cvars:
+g_maxConnectionsPerIP - Limit number of connections per IP (Default: 1)
