@@ -1,20 +1,12 @@
-JKA Open Base is designed to be a suitable alternative to the Jedi Academy SDK code base.
-It is open source and can be used for open source projects or closed source projects.
-It includes bug fixes and security fixes that the sdk lacks.
-
-Current Supported Platforms:
-Win32 with Microsoft Visual Studio C++ 2010 (cgame, game, ui)
-Linux with GCC (game)
-
-To build with GCC & Linux:
-$ cd codemp/game
-$ make
-
-To clean up:
-$ make clean
-
-New Game Commands:
-showplayerid - Display a list of players on server and their associated numbers
+This branch "duel" contains extra features for dueling.
 
 New Game Cvars:
-g_maxConnectionsPerIP - Limit number of connections per IP (Default: 1)
+g_multiDuel - Enables Multiple Duels at once (Default: 1)
+g_privateDuelTimeLimit - The Number of Milliseconds a client must wait between each duel (Default: 1000)
+g_maxDuelDistance - Distance duelers must be within each other or duel is ended (Default: 1024, Unlimited Distance: 0)
+
+New CGame Cvars:
+cg_drawPrivateDuelShell - Draws the shell around player and opponent in dueling. (Default: 1)
+
+Other Changes:
+bot_honorableduelacceptance - Removed cheat protection
