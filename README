@@ -1,6 +1,4 @@
 JKA Open Base is designed to be a suitable alternative to the Jedi Academy SDK code base.
-It is open source and can be used for open source projects or closed source projects.
-It includes bug fixes and security fixes that the sdk lacks.
 
 Current Supported Platforms:
 Win32 with Microsoft Visual Studio C++ 2010 (cgame, game, ui)
@@ -13,8 +11,17 @@ $ make
 To clean up:
 $ make clean
 
+(See "duel" branch for extended features for dueling)
+
 New Game Commands:
 showplayerid - Display a list of players on server and their associated numbers
 
 New Game Cvars:
 g_maxConnectionsPerIP - Limit number of connections per IP (Default: 1)
+
+Included Security Fixes For:
+jamsgbof - http://aluigi.altervista.org/adv/jamsgbof-adv.txt
+q3msgboom - http://aluigi.altervista.org/adv/q3msgboom-adv.txt
+
+..Not Included:
+q3infoboom - http://aluigi.altervista.org/adv/q3infoboom-adv.txt
