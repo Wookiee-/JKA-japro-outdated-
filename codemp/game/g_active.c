@@ -2479,7 +2479,8 @@ void ClientThink_real( gentity_t *ent ) {
 		//Keep the time updated, so once this duel ends this player can't engage in a duel for another
 		//10 seconds. This will give other people a chance to engage in duels in case this player wants
 		//to engage again right after he's done fighting and someone else is waiting.
-		ent->client->ps.fd.privateDuelTime = level.time + 10000;
+		//ent->client->ps.fd.privateDuelTime = level.time + 10000;
+		ent->client->ps.fd.privateDuelTime = level.time + g_privateDuelTimeLimit.integer;
 
 		if (ent->client->ps.duelTime < level.time)
 		{
