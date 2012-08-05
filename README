@@ -22,6 +22,17 @@ g_maxConnectionsPerIP - Limit number of connections per IP (Default: 1)
 Included Security Fixes For:
 jamsgbof - http://aluigi.altervista.org/adv/jamsgbof-adv.txt
 q3msgboom - http://aluigi.altervista.org/adv/q3msgboom-adv.txt
+q3cbufexec/callvote #1 - http://aluigi.org/poc.htm#q3cbufexec
+callvote #2 - http://aluigi.freeforums.org/post9402.html
+remapShader (cgame fix only) - http://www.securityfocus.com/archive/1/archive/1/433349/100/0/threaded
+forcestring
+gc
 
 ..Not Included:
 q3infoboom - http://aluigi.altervista.org/adv/q3infoboom-adv.txt
+sv_allowdownload - http://www.securityfocus.com/archive/1/archive/1/433349/100/0/threaded
+
+Other Noted Fixes:
+Multiline Names
+Multiline Text
+*name bugging
