@@ -2580,7 +2580,7 @@ void ClientThink_real( gentity_t *ent ) {
 				trap_SendServerCommand( -1, va("cp \"%s\n\"", G_GetStringEdString("MP_SVGAME", "PLDUELTIE")) );
 			}
 		}
-		else
+		else if (g_maxDuelDistance.integer)
 		{
 			vec3_t vSub;
 			float subLen = 0;
@@ -2588,7 +2588,7 @@ void ClientThink_real( gentity_t *ent ) {
 			VectorSubtract(ent->client->ps.origin, duelAgainst->client->ps.origin, vSub);
 			subLen = VectorLength(vSub);
 
-			if (subLen >= 1024)
+			if (subLen >= g_maxDuelDistance.integer)
 			{
 				ent->client->ps.duelInProgress = 0;
 				duelAgainst->client->ps.duelInProgress = 0;

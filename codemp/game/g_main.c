@@ -223,6 +223,7 @@ vmCvar_t		g_showDuelHealths;
 vmCvar_t		g_maxConnectionsPerIP;
 vmCvar_t		g_multiDuel;
 vmCvar_t		g_privateDuelTimeLimit;
+vmCvar_t		g_maxDuelDistance;
 
 // bk001129 - made static to avoid aliasing
 static cvarTable_t		gameCvarTable[] = {
@@ -253,6 +254,7 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &g_maxConnectionsPerIP, "g_maxConnectionsPerIP", "1", CVAR_ARCHIVE, 0, qtrue, qfalse },
 	{ &g_multiDuel, "g_multiDuel", "1", CVAR_ARCHIVE, 0, qtrue, qfalse },
 	{ &g_privateDuelTimeLimit, "g_privateDuelTimeLimit", "1000", CVAR_ARCHIVE, 0, qtrue, qfalse },
+	{ &g_maxDuelDistance, "g_maxDuelDistance", "1024", CVAR_ARCHIVE, 0, qtrue, qfalse },
 
 	{ &g_ff_objectives, "g_ff_objectives", "0", /*CVAR_SERVERINFO |*/ CVAR_CHEAT | CVAR_NORESTART, 0, qtrue },
 
