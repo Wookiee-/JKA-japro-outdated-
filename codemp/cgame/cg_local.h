@@ -1794,6 +1794,8 @@ extern	vmCvar_t		cg_debugBB;
 Ghoul2 Insert End
 */
 
+extern vmCvar_t cg_drawPrivateDuelShell;
+
 //
 // cg_main.c
 //

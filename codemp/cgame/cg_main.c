@@ -866,6 +866,8 @@ vmCvar_t	ui_myteam;
 
 vmCvar_t	cg_snapshotTimeout;
 
+vmCvar_t cg_drawPrivateDuelShell;
+
 typedef struct {
 	vmCvar_t	*vmCvar;
 	char		*cvarName;
@@ -1044,6 +1046,7 @@ Ghoul2 Insert Start
 /*
 Ghoul2 Insert End
 */
+	{ &cg_drawPrivateDuelShell, "cg_drawPrivateDuelShell", "1", CVAR_ARCHIVE }
 };
 
 static int  cvarTableSize = sizeof( cvarTable ) / sizeof( cvarTable[0] );

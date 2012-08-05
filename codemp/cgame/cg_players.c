@@ -10536,7 +10536,7 @@ stillDoSaber:
 
 			duelEnt = &cg_entities[cg.snap->ps.duelIndex];
 			
-			if (duelEnt)
+			if (duelEnt && cg_drawPrivateDuelShell.integer)
 			{
 				vec3_t vecSub;
 				float subLen = 0;
