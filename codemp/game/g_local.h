@@ -1665,6 +1665,7 @@ extern	vmCvar_t	g_powerDuelEndHealth;
 extern vmCvar_t		g_showDuelHealths;
 
 extern vmCvar_t		g_maxConnectionsPerIP;
+extern vmCvar_t		g_multiDuel;
 
 
 

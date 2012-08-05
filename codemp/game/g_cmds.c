@@ -2865,7 +2865,7 @@ void Cmd_EngageDuel_f(gentity_t *ent)
 		return;
 	}
 
-	if (G_OtherPlayersDueling())
+	if (G_OtherPlayersDueling() && !g_multiDuel.integer)
 	{
 		trap_SendServerCommand( ent-g_entities, va("print \"%s\n\"", G_GetStringEdString("MP_SVGAME", "CANTDUEL_BUSY")) );
 		return;
