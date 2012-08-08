@@ -1594,6 +1594,8 @@ typedef struct {
 	// effects
 	cgEffects_t		effects;
 
+	qboolean		duelPassThru;
+
 } cgs_t;
 
 typedef struct siegeExtended_s
