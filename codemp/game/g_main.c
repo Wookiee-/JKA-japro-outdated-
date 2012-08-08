@@ -224,6 +224,7 @@ vmCvar_t		g_maxConnectionsPerIP;
 vmCvar_t		g_multiDuel;
 vmCvar_t		g_privateDuelTimeLimit;
 vmCvar_t		g_maxDuelDistance;
+vmCvar_t		g_duelPassThru;
 
 // bk001129 - made static to avoid aliasing
 static cvarTable_t		gameCvarTable[] = {
@@ -249,6 +250,7 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &g_maxGameClients, "g_maxGameClients", "0", CVAR_SERVERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qfalse  },
 
 	{ &g_trueJedi, "g_jediVmerc", "0", CVAR_SERVERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qtrue },
+	{ &g_duelPassThru, "g_duelPassThru", "0", CVAR_SERVERINFO | CVAR_LATCH | CVAR_ARCHIVE, 0, qtrue },
 
 	// change anytime vars
 	{ &g_maxConnectionsPerIP, "g_maxConnectionsPerIP", "1", CVAR_ARCHIVE, 0, qtrue, qfalse },

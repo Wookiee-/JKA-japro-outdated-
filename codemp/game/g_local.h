@@ -1668,6 +1668,7 @@ extern vmCvar_t		g_maxConnectionsPerIP;
 extern vmCvar_t		g_multiDuel;
 extern vmCvar_t		g_privateDuelTimeLimit;
 extern vmCvar_t		g_maxDuelDistance;
+extern vmCvar_t		g_duelPassThru;
 
 
 
