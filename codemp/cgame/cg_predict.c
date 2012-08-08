@@ -244,6 +244,16 @@ static void CG_ClipMoveToEntities ( const vec3_t start, const vec3_t mins, const
 			continue;
 		}
 
+		// duelpassthru prediction
+		if (cgs.duelPassThru) {
+			// we are dueling and they aren't the opponent, ignore them
+			if (cg.predictedPlayerState.duelInProgress && ent->number != cg.predictedPlayerState.duelIndex)
+				continue;
+			// we are not dueling, and not our opponent, and they are in "duelInProgress" ignore them
+			else if (ent->bolt1)
+				continue;
+		}
+
 		if ( ent->solid == SOLID_BMODEL ) {
 			// special value for bmodel
 			cmodel = trap_CM_InlineModel( ent->modelindex );
