@@ -2939,6 +2939,13 @@ void Cmd_EngageDuel_f(gentity_t *ent)
 				challenged->client->ps.weaponTime = 400;
 				challenged->client->ps.saberHolstered = 2;
 			}
+
+			if (g_duelStartHealth.integer) {
+				ent->health = ent->client->ps.stats[STAT_HEALTH] = g_duelStartHealth.integer;
+				ent->client->ps.stats[STAT_ARMOR] = g_duelStartArmor.integer;
+				challenged->health = challenged->client->ps.stats[STAT_HEALTH] = g_duelStartHealth.integer;
+				challenged->client->ps.stats[STAT_ARMOR] = g_duelStartArmor.integer;
+			}
 		}
 		else
 		{
