@@ -1671,6 +1671,7 @@ extern vmCvar_t		g_maxDuelDistance;
 extern vmCvar_t		g_duelPassThru;
 extern vmCvar_t		g_duelStartHealth;
 extern vmCvar_t		g_duelStartArmor;
+extern vmCvar_t		g_improvedDuelMessage;
 
 
 
