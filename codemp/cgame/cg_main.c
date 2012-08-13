@@ -867,6 +867,8 @@ vmCvar_t	ui_myteam;
 vmCvar_t	cg_snapshotTimeout;
 
 vmCvar_t cg_drawPrivateDuelShell;
+vmCvar_t cg_drawPrivateDuelPlayers;
+vmCvar_t cg_drawDuelers;
 
 typedef struct {
 	vmCvar_t	*vmCvar;
@@ -1046,7 +1048,9 @@ Ghoul2 Insert Start
 /*
 Ghoul2 Insert End
 */
-	{ &cg_drawPrivateDuelShell, "cg_drawPrivateDuelShell", "1", CVAR_ARCHIVE }
+	{ &cg_drawPrivateDuelShell, "cg_drawPrivateDuelShell", "1", CVAR_ARCHIVE },
+	{ &cg_drawPrivateDuelPlayers, "cg_drawPrivateDuelPlayers", "1", CVAR_ARCHIVE },
+	{ &cg_drawDuelers, "cg_drawDuelers", "1", CVAR_ARCHIVE }
 };
 
 static int  cvarTableSize = sizeof( cvarTable ) / sizeof( cvarTable[0] );

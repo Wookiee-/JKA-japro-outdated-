@@ -1797,6 +1797,8 @@ Ghoul2 Insert End
 */
 
 extern vmCvar_t cg_drawPrivateDuelShell;
+extern vmCvar_t	cg_drawPrivateDuelPlayers;
+extern vmCvar_t	cg_drawDuelers;
 
 //
 // cg_main.c

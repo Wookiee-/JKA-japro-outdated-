@@ -8810,6 +8810,24 @@ void CG_Player( centity_t *cent ) {
 		return;
 	}
 
+	if (cent->currentState.number != cg.snap->ps.clientNum)
+	{ // we only care about other players
+		if (cg.snap->ps.duelInProgress)
+		{ // we are dueling
+			if (cent->currentState.number != cg.snap->ps.duelIndex)
+			{ // don't draw this entity because we aren't dueling them
+				if (!cg_drawPrivateDuelPlayers.integer) return;
+			}
+		}
+		else
+		{ // we are not dueling
+			if (cent->currentState.bolt1)
+			{ // this entity is dueling, don't draw
+				if (!cg_drawDuelers.integer) return;
+			}
+		}
+	}
+
 	//If this client has tricked you.
 	if (CG_IsMindTricked(cent->currentState.trickedentindex,
 		cent->currentState.trickedentindex2,
