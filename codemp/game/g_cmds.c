@@ -1774,24 +1774,6 @@ void Cmd_Where_f( gentity_t *ent ) {
 	trap_SendServerCommand( ent-g_entities, va("print \"%s\n\"", vtos( ent->s.origin ) ) );
 }
 
-/**
- * Display a list of players and their ids to a client
- */
-static void Cmd_ShowPlayerID_f(const gentity_t * const ent)
-{
-	int i;
-	gclient_t *client;
-	const int clientNum = ent - g_entities;
-
-	for (i = 0, client = level.clients; i < level.maxclients; ++i, ++client)
-	{
-		if (client->pers.connected != CON_CONNECTED)
-			continue;
-
-		trap_SendServerCommand(clientNum, va("print \"%2d: %s^7\n\"", i, client->pers.netname)); 
-	}
-}
-
 static const char *gameNames[] = {
 	"Free For All",
 	"Holocron FFA",
@@ -3350,8 +3332,6 @@ void ClientCommand( int clientNum ) {
 		Cmd_SetViewpos_f( ent );
 	else if (Q_stricmp (cmd, "stats") == 0)
 		Cmd_Stats_f( ent );
-	else if (Q_stricmp (cmd, "showplayerid") == 0)
-		Cmd_ShowPlayerID_f(ent);
 	/*
 	else if (Q_stricmp (cmd, "kylesmash") == 0)
 	{

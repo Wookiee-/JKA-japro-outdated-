@@ -256,6 +256,17 @@ static void CG_Camera_f( void ) {
 }
 */
 
+static void CG_ShowPlayerID_f(void)
+{
+	int i;
+	clientInfo_t *cl;
+
+	for (i = 0, cl = cgs.clientinfo; i < cgs.maxclients; ++i, ++cl) {
+		if (cl->infoValid) {
+			CG_Printf("%2d: %s\n", i, cl->name); 
+		}
+	}
+}
 
 typedef struct {
 	char	*cmd;
@@ -295,6 +306,7 @@ static consoleCommand_t	commands[] = {
 	{ "briefing", CG_SiegeBriefing_f },
 	{ "siegeCvarUpdate", CG_SiegeCvarUpdate_f },
 	{ "siegeCompleteCvarUpdate", CG_SiegeCompleteCvarUpdate_f },
+	{ "showplayerid", CG_ShowPlayerID_f },
 };
 
 
