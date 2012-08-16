@@ -245,13 +245,22 @@ static void CG_ClipMoveToEntities ( const vec3_t start, const vec3_t mins, const
 		}
 
 		// duelpassthru prediction
-		if (cgs.duelPassThru) {
-			// we are dueling and they aren't the opponent, ignore them
-			if (cg.predictedPlayerState.duelInProgress && ent->number != cg.predictedPlayerState.duelIndex)
-				continue;
-			// we are not dueling, and not our opponent, and they are in "duelInProgress" ignore them
+		if (cgs.duelPassThru)
+		{
+			if (cg.predictedPlayerState.duelInProgress)
+			{ // we are in a private duel
+				if (ent->number != cg.predictedPlayerState.duelIndex)
+				{ // we are not dueling them
+				  // don't clip
+					continue;
+				}
+			}
 			else if (ent->bolt1)
+			{ // we are not in a private duel
+			  // and this player is dueling
+			  // don't clip
 				continue;
+			}
 		}
 
 		if ( ent->solid == SOLID_BMODEL ) {
