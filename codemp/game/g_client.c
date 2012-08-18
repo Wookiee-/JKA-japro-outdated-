@@ -1907,7 +1907,7 @@ void ClientUserinfoChanged( int clientNum ) {
 	trap_GetUserinfo(clientNum, userinfo, sizeof(userinfo));
 
 	// check for malformed or illegal info strings
-	if (Info_Invalid(userinfo)) {
+	if (!Info_Validate(userinfo)) {
 		trap_SendServerCommand(clientNum, "print \"Invalid Userinfo detected\n\"");
 		return;
 	}
