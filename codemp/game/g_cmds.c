@@ -2115,19 +2115,22 @@ void Cmd_Vote_f( gentity_t *ent ) {
 		}
 	}
 
-	trap_SendServerCommand( ent-g_entities, va("print \"%s\n\"", G_GetStringEdString("MP_SVGAME", "PLVOTECAST")) );
+	trap_Argv(1, msg, sizeof(msg));
+	Q_strlwr(msg);
 
-	ent->client->mGameFlags |= PSG_VOTED;
-
-	trap_Argv( 1, msg, sizeof( msg ) );
-
-	if ( msg[0] == 'y' || msg[1] == 'Y' || msg[1] == '1' ) {
+	if (!Q_stricmp(msg, "yes")) {
 		level.voteYes++;
 		trap_SetConfigstring( CS_VOTE_YES, va("%i", level.voteYes ) );
-	} else {
+	} else if (!Q_stricmp(msg, "no")) {
 		level.voteNo++;
 		trap_SetConfigstring( CS_VOTE_NO, va("%i", level.voteNo ) );	
+	} else {
+		trap_SendServerCommand(ent-g_entities, "print \"vote <yes|no>\n\"");
+		return;
 	}
+
+	trap_SendServerCommand( ent-g_entities, va("print \"%s\n\"", G_GetStringEdString("MP_SVGAME", "PLVOTECAST")) );
+	ent->client->mGameFlags |= PSG_VOTED;
 
 	// a majority will be determined in CheckVote, which will also account
 	// for players entering or leaving
